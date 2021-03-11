@@ -9,5 +9,5 @@ export default {
 </script>
 
 <style>
-
+.logo{padding: 5px 0;}
 </style>
