@@ -5,11 +5,11 @@
       :key="item.id"
       :class="{ sub: item.sub.length !== 0 }"
     >
-      <a :href="item.url">{{ item.name }}</a>
+      <router-link :to="{ path: item.url }">{{ item.name }}</router-link>
       <div class="sub_menu" v-if="item.sub.length !== 0">
         <ul>
           <li v-for="sub in item.sub" :key="sub.id">
-            <a :href="sub.url">{{ sub.name }}</a>
+            <router-link :to="{ path: sub.url }">{{ sub.name }}</router-link>
           </li>
         </ul>
       </div>

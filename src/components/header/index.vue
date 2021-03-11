@@ -31,7 +31,7 @@ export default {
           name: '關於我們',
           url: '#',
           sub: [
-            { id: 5, name: '品牌介紹', url: '#' },
+            { id: 5, name: '品牌介紹', url: '/Brand' },
             { id: 6, name: '工藝師專區', url: '#' },
             { id: 7, name: '企業服務', url: '#' },
           ],

@@ -1,5 +1,5 @@
 <template>
-  <div class="logo"><a href="#"><img src="img/img-logoWhite-header.png" /></a></div>
+  <div class="logo"><router-link to="/"><img src="img/img-logoWhite-header.png" /></router-link></div>
 </template>
 
 <script>
