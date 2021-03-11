@@ -17,15 +17,25 @@
         <ul>
           <li v-for="item in cartList" :key="item.id">
             <div class="name">{{ item.name }}</div>
-            <div class="price">{{item.priceText}}</div>
+            <div class="price">{{ item.priceText }}</div>
           </li>
         </ul>
-        <div class="total">總計 {{cart_total.text}}</div>
+        <div class="total">總計 {{ cart_total.text }}</div>
         <div class="cart_in_btn"><a href="#">立即結帳</a></div>
       </div>
     </li>
     <li class="search_btn">
-      <img src="img/icon-search.png" />
+      <a @click="search_open">
+        <img src="img/icon-search.png" />
+      </a>
+      <div class="search_bar" :class="{ active: search_sub_open }">
+        <div class="container">
+          <form class="search_inner" action="/search" method="get">
+            <input type="text" name="search" placeholder="請輸入關鍵字" />
+            <button>搜尋</button>
+          </form>
+        </div>
+      </div>
     </li>
   </ul>
 </template>
@@ -38,7 +48,8 @@ export default {
   data() {
     return {
       user_sub_open: 0,
-      cart_sub_open: 0
+      cart_sub_open: 0,
+      search_sub_open: 0,
     }
   },
   computed: {
@@ -49,24 +60,31 @@ export default {
         return c
       })
     },
-    cart_total(){
+    cart_total() {
       let total = 0
       let data = []
-      this.cartList.forEach(c=>{
+      this.cartList.forEach((c) => {
         total = total + c.price
       })
       data['price'] = total
       data['text'] = new Intl.NumberFormat().format(total)
       return data
-    }
+    },
   },
   methods: {
     user_open() {
       this.user_sub_open = !this.user_sub_open
       this.cart_sub_open = 0
+      this.search_sub_open = 0
     },
     cart_open() {
       this.cart_sub_open = !this.cart_sub_open
+      this.user_sub_open = 0
+      this.search_sub_open = 0
+    },
+    search_open() {
+      this.search_sub_open = !this.search_sub_open
+      this.cart_sub_open = 0
       this.user_sub_open = 0
     },
   },
@@ -190,6 +208,51 @@ ul.tool_bar > li.cart_btn > .sub_menu > .cart_in_btn > a {
   border-radius: 5px;
 }
 ul.tool_bar > li.cart_btn > .sub_menu > .cart_in_btn > a:hover {
+  opacity: 0.8;
+}
+
+ul.tool_bar > li.search_btn {
+  position: unset;
+}
+.search_bar {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 100%;
+  z-index: 6;
+  background-color: #555555;
+  padding: 1rem 0;
+  transform: scaleY(0);
+  transition-duration: 0.3s;
+  transform-origin: top;
+}
+.search_bar.active {
+  transform: scaleY(1);
+}
+.search_bar .search_inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.search_bar .search_inner input {
+  background-color: inherit;
+  outline: none;
+  border: none;
+  color: #fff;
+  font-size: 1.25rem;
+  width: calc(100% - 105px);
+  line-height: 38px;
+}
+.search_bar .search_inner button {
+  background-color: #b28146;
+  color: #fff;
+  outline: none;
+  border: none;
+  width: 100px;
+  height: 40px;
+  font-size: 1.25rem;
+}
+.search_bar .search_inner button:hover {
   opacity: 0.8;
 }
 </style>

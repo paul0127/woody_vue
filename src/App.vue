@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <headerBlock ></headerBlock>
+    <headerBlock></headerBlock>
+    
   </div>
 </template>
 
@@ -12,14 +13,15 @@ export default {
   components: {
     headerBlock,
   },
-  data(){
-    return {
-      
-    }
-  }
+  data() {
+    return {}
+  },
 }
 </script>
 
 <style>
-html{font-size: 16px;}
+html {
+  font-size: 16px;
+}
+
 </style>
