@@ -1,18 +1,18 @@
 <template>
   <ul class="tool_bar">
-    <li class="login_btn"><a href="#">登入</a></li>
+    <li class="login_btn"><router-link :to="{path : 'login'}">登入</router-link></li>
     <li class="user_btn sub" :class="{ active: user_sub_open }">
       <a @click="user_open"><img src="img/user.svg"/></a>
       <div class="sub_menu">
         <ul>
-          <li><a href="#">會員資料</a></li>
-          <li><a href="#">購物須知</a></li>
-          <li><a href="#">訂單查詢</a></li>
+          <li><router-link :to="{path : 'member'}">會員資料</router-link></li>
+          <li><router-link :to="{path : 'policy'}">購物須知</router-link></li>
+          <li><router-link :to="{path : '/member/order'}">訂單查詢</router-link></li>
         </ul>
       </div>
     </li>
     <li class="cart_btn sub" :class="{ active: cart_sub_open }">
-      <a @click="cart_open"><img src="img/icon-cart.svg" /><span>0</span></a>
+      <a @click="cart_open"><img src="img/icon-cart.svg" /><span>{{cartList.length}}</span></a>
       <div class="sub_menu">
         <ul>
           <li v-for="item in cartList" :key="item.id">
@@ -21,7 +21,7 @@
           </li>
         </ul>
         <div class="total">總計 {{ cart_total.text }}</div>
-        <div class="cart_in_btn"><a href="#">立即結帳</a></div>
+        <div class="cart_in_btn"><router-link :to="{path : '/cart'}">立即結帳</router-link></div>
       </div>
     </li>
     <li class="search_btn">
@@ -86,6 +86,13 @@ export default {
       this.search_sub_open = !this.search_sub_open
       this.cart_sub_open = 0
       this.user_sub_open = 0
+    },
+  },
+  watch: {
+    $route() {
+      this.user_sub_open = 0
+      this.cart_sub_open = 0,
+      this.search_sub_open = 0
     },
   },
 }

@@ -12,6 +12,8 @@
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.9.1",
     "vue": "^2.6.12",
+    "vue-cool-lightbox": "^2.7.1",
+    "vue-fancybox": "^1.0.3",
     "vue-owl-carousel": "^2.0.3",
     "vue-router": "^3.5.1"
   },

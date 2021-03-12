@@ -40,14 +40,14 @@ export default {
         { id: 3, name: '商品介紹', url: '#', sub: [] },
         { id: 4, name: '據點', url: '#', sub: [] },
       ],
-      cart_list:[
-        {id:1,name:'商品名稱1',price:1230},
-        {id:2,name:'商品名稱2',price:2320},
-        {id:3,name:'商品名稱3',price:3330},
-        {id:4,name:'商品名稱4',price:4350}
-      ]
+      cart_list: [
+        { id: 1, name: '商品名稱1', price: 1230 },
+        { id: 2, name: '商品名稱2', price: 2320 },
+        { id: 3, name: '商品名稱3', price: 3330 },
+        { id: 4, name: '商品名稱4', price: 4350 },
+      ],
     }
-  }
+  },
 }
 </script>
 

@@ -3,31 +3,25 @@
     <div class="container">
       <!--大標題-->
       <div class="news_title">
-        <h1>最新消息<span>|</span>News</h1>
+        <h1>{{news_info.name}}<span>|</span>{{news_info.ename}}</h1>
       </div>
       <!--最新消息輪播-->
       <carousel
       class="news_slider"
-      items="1"
-      :autoplay="true"
+      :items="1"
+      :autoplay="false"
       :nav="true"
       :dots="false"
       :loop="true"
     >
-        <div class="item">
-          <h2>青木工房最新課程1-2020,11-12月</h2>
-          <p>適合進階創作者的木作課程,產品設計&手工木作一次完成。</p>
-          <div class="place">台北/台中</div>
-          <div class="btn"><a href="#">READ MORE</a></div>
-        </div>
-        <div class="item">
-          <h2>青木工房最新課程2-2020,11-12月</h2>
-          <p>適合進階創作者的木作課程,產品設計&手工木作一次完成。</p>
-          <div class="place">台北/台中</div>
-          <div class="btn"><a href="#">READ MORE</a></div>
+        <div class="item" v-for="item in news_list" :key="item.id">
+          <h2>{{item.name}}</h2>
+          <p>{{item.desc}}</p>
+          <div class="place">{{item.place}}</div>
+          <div class="btn"><router-link :to="{path:'/news/class_'+item.pc_code+'/'+item.id}">READ MORE</router-link></div>
         </div>
       </carousel>
-      <div class="more"><a href="#">更多消息 +</a></div>
+      <div class="more"><router-link :to="{path:'/news/class_'+news_info.id}">更多消息 +</router-link></div>
     </div>
   </section>
 </template>
@@ -35,10 +29,18 @@
 import carousel from 'vue-owl-carousel'
 
 export default {
+  props:{
+    news_info:Object,
+    news_list:Array
+  },
   components: { carousel },
+  data(){
+    return {
+    }
+  }
 }
 </script>
-<style scoped>
+<style>
 .news_block {
   background-image: url(/img/img-newsSection.png);
   background-size: cover;

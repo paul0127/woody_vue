@@ -2,16 +2,13 @@
   <div class="slider_block">
     <carousel
       class="slider"
-      items="1"
+      :items="1"
       :autoplay="true"
       :nav="false"
       :dots="true"
       :loop="true"
     >
-      <img src="img/img-forKvSection.png" />
-      <img src="img/img-forKvSection.png" />
-      <img src="img/img-forKvSection.png" />
-      <img src="img/img-forKvSection.png" />
+      <img v-for="item in banner_list" :key="item.id" :src="item.pic" />
     </carousel>
     <div class="go_to"></div>
   </div>
@@ -21,7 +18,9 @@
 import carousel from 'vue-owl-carousel'
 
 export default {
-  name: 'App',
+  props:{
+    banner_list:Array
+  },
   components: {
     carousel,
   },
