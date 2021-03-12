@@ -2,7 +2,8 @@
   <div class="container">
     <div class="bread">
       <ul>
-        <li v-for="item in bread_list" :key="item.id"><router-link :to="{ path: item.url }">{{ item.name }}</router-link></li>
+        <li v-for="item in bread_count" :key="item.id"><router-link :to="{ path: item.url }">{{ item.name }}</router-link></li>
+        <li>{{bread_list[bread_list.length-1].name}}</li>
       </ul>
     </div>
     <div class="b_title">品牌介紹<span>|</span>Brand</div>
@@ -13,6 +14,14 @@ export default {
   props: {
     bread_list: Array,
   },
+  computed:{
+    bread_count(){
+      let last = this.bread_list.length-1
+      let data = this.bread_list.slice(0,last)
+
+      return data
+    }
+  }
 }
 </script>
 <style scoped>
