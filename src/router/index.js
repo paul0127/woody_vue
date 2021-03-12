@@ -16,7 +16,13 @@ const routes = [
     name: 'Brand',
     component: () => import(/* webpackChunkName: "about" */ '../views/Brand.vue'),
     meta: {title: '品牌介紹'}
-  }
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue'),
+    meta: {title: '會員登入'}
+  },
 ]
 
 const router = new VueRouter({

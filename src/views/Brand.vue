@@ -1,6 +1,6 @@
 <template>
   <div class="contain">
-    <bread></bread>
+    <bread :bread_list="bread_list"></bread>
     <div class="brand">
       <div class="container">
         <div class="top">
@@ -137,12 +137,18 @@
 <script>
 import bread from '@/components/bread/bread.vue'
 export default {
-  name: 'App',
+  name: 'Brand',
   components: {
     bread,
   },
   data() {
-    return {}
+    return {
+      bread_list:[
+            {id:1,name:'首頁',url:'/'},
+            {id:2,name:'關於我們',url:'/'},
+            {id:3,name:'品牌介紹',url:'/'}
+        ]
+    }
   },
 }
 </script>

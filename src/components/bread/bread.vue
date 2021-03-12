@@ -2,14 +2,19 @@
   <div class="container">
     <div class="bread">
       <ul>
-        <li><a href="#">首頁</a></li>
-        <li><a href="#">關於我們</a></li>
-        <li>品牌介紹</li>
+        <li v-for="item in bread_list" :key="item.id"><router-link :to="{ path: item.url }">{{ item.name }}</router-link></li>
       </ul>
     </div>
     <div class="b_title">品牌介紹<span>|</span>Brand</div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    bread_list: Array,
+  },
+}
+</script>
 <style scoped>
 .bread {
   margin-bottom: 1rem;
@@ -64,6 +69,6 @@
   width: 282px;
   bottom: 0;
   left: 50%;
-  transform: translate(-50%,50%);
+  transform: translate(-50%, 50%);
 }
 </style>

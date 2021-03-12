@@ -3,35 +3,35 @@
     <div class="container">
       <div class="footer_content">
         <div class="footer_logo">
-          <a href="#"><img src="/img/img-logoWhite-footer.png"/></a>
+          <router-link :to="{ path: '/' }"><img :src="info.footer_logo"/></router-link>
         </div>
         <div class="footer_link">
           <ul>
-            <li><a href="#">關於我們</a></li>
-            <li><a href="news.html">最新消息</a></li>
-            <li><a href="#">商品介紹</a></li>
-            <li><a href="#">服務據點</a></li>
-            <li><a href="#">工藝師專區</a></li>
+            <li v-for="item in footer_list" :key="item.id">
+              <router-link :to="{ path: '/page/' + item.id }">{{
+                item.name
+              }}</router-link>
+            </li>
           </ul>
         </div>
         <div class="footer_bottom">
           <div class="contact">
-            <div>聯絡電話：03-9605665</div>
-            <div>營業時間：週一～週日 9:00~18:00</div>
+            <div>聯絡電話：{{info.tel}}</div>
+            <div>營業時間：{{info.open_day}}</div>
           </div>
           <div class="social">
             <ul>
               <li>
-                <a href="#"><img src="/img/img-pinkoi-white.png"/></a>
+                <a target="_blank" :href="info.pinkoi_url"><img src="/img/img-pinkoi-white.png"/></a>
               </li>
               <li>
-                <a href="#"><img src="/img/icon-facebook.svg"/></a>
+                <a target="_blank" :href="info.fb_url"><img src="/img/icon-facebook.svg"/></a>
               </li>
               <li>
-                <a href="#"><img src="/img/icon-instagram.svg"/></a>
+                <a target="_blank" :href="info.ig_url"><img src="/img/icon-instagram.svg"/></a>
               </li>
               <li>
-                <a href="#"><img src="/img/icon-line.svg"/></a>
+                <a target="_blank" :href="info.line_url"><img src="/img/icon-line.svg"/></a>
               </li>
             </ul>
           </div>
@@ -44,15 +44,32 @@
 
 <script>
 export default {
-    data(){
-        return {}
+  data() {
+    return {
+      info: {
+        footer_logo: '/img/img-logoWhite-footer.png',
+        tel: '03-9605665',
+        open_day: '週一～週日 9:00~18:00',
+        pinkoi_url:'https://www.pinkoi.com/',
+        fb_url:'https://www.facebook.com',
+        ig_url:'https://www.instagram.com/',
+        line_url:'https://line.me/zh-hant/'
+      },
+      footer_list: [
+        { id: 1, name: '關於我們', url: '#' },
+        { id: 2, name: '最新消息', url: '#' },
+        { id: 3, name: '商品介紹', url: '#' },
+        { id: 4, name: '服務據點', url: '#' },
+        { id: 5, name: '工藝師專區', url: '#' },
+      ],
     }
+  },
 }
 </script>
 
 <style>
 footer {
-  background-color:#333333;
+  background-color: #333333;
   padding: 2.5rem 0;
 }
 footer .footer_logo {
