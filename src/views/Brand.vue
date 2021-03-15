@@ -145,8 +145,8 @@ export default {
     return {
       bread_list:[
             {id:1,name:'首頁',url:'/'},
-            {id:2,name:'關於我們',url:'/'},
-            {id:3,name:'品牌介紹',url:'/'}
+            {id:2,name:'關於我們',url:'#'},
+            {id:3,name:'品牌介紹',url:'#'}
         ]
     }
   },
