@@ -38,7 +38,7 @@ export default {
         },
         { id: 2, name: '最新消息', url: '/news', sub: [] },
         { id: 3, name: '商品介紹', url: '/product', sub: [] },
-        { id: 4, name: '據點', url: '#', sub: [] },
+        { id: 4, name: '據點', url: '/location', sub: [] },
       ],
       cart_list: [
         { id: 1, name: '商品名稱1', price: 1230 },

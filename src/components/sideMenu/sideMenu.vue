@@ -1,35 +1,12 @@
 <template>
   <ul class="side-menu">
-    <li>
-      <a href="javascript:(0)">家俱</a>
+    <li v-for="item in side_list" :key="item.id">
+      <a href="javascript:(0)">{{ item.name }}</a>
       <ul class="side-menu-child">
-        <li>
-          <a href="product_list.html">日常</a>
-        </li>
-        <li>
-          <a href="product_list.html">馨享</a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <a href="javascript:(0)">文創商品</a>
-      <ul class="side-menu-child">
-        <li>
-          <a href="product_list.html">工藝類</a>
-        </li>
-        <li>
-          <a href="product_list.html">食器類</a>
-        </li>
-        <li>
-          <a href="product_list.html">文具類</a>
-        </li>
-      </ul>
-    </li>
-    <li>
-      <a href="javascript:(0)">個性化服務</a>
-      <ul class="side-menu-child">
-        <li>
-          <a href="product_list.html">個性化服務</a>
+        <li v-for="i in item.sub" :key="i.id">
+          <router-link :to="{ path: '/product/class_' + i.id }">{{
+            i.name
+          }}</router-link>
         </li>
       </ul>
     </li>
@@ -37,9 +14,35 @@
 </template>
 <script>
 export default {
-  props: {
-  },
-  computed: {
+  props: {},
+  computed: {},
+  data() {
+    return {
+      side_list: [
+        {
+          id: 1,
+          name: '家俱',
+          sub: [
+            { id: 1, name: '日常' },
+            { id: 2, name: '馨享' },
+          ],
+        },
+        {
+          id: 2,
+          name: '文創商品',
+          sub: [
+            { id: 3, name: '工藝類' },
+            { id: 4, name: '食器類' },
+            { id: 5, name: '文具類' },
+          ],
+        },
+        {
+          id: 3,
+          name: '個性化服務',
+          sub: [{ id: 6, name: '個性化服務' }],
+        },
+      ],
+    }
   },
 }
 </script>

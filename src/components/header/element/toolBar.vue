@@ -2,7 +2,7 @@
   <ul class="tool_bar">
     <li class="login_btn"><router-link :to="{path : 'login'}">登入</router-link></li>
     <li class="user_btn sub" :class="{ active: user_sub_open }">
-      <a @click="user_open"><img src="img/user.svg"/></a>
+      <a @click="user_open"><img src="/img/user.svg"/></a>
       <div class="sub_menu">
         <ul>
           <li><router-link :to="{path : 'member'}">會員資料</router-link></li>
@@ -12,7 +12,7 @@
       </div>
     </li>
     <li class="cart_btn sub" :class="{ active: cart_sub_open }">
-      <a @click="cart_open"><img src="img/icon-cart.svg" /><span>{{cartList.length}}</span></a>
+      <a @click="cart_open"><img src="/img/icon-cart.svg" /><span>{{cartList.length}}</span></a>
       <div class="sub_menu">
         <ul>
           <li v-for="item in cartList" :key="item.id">
@@ -26,7 +26,7 @@
     </li>
     <li class="search_btn">
       <a @click="search_open">
-        <img src="img/icon-search.png" />
+        <img src="/img/icon-search.png" />
       </a>
       <div class="search_bar" :class="{ active: search_sub_open }">
         <div class="container">

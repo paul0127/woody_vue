@@ -30,6 +30,12 @@ const routes = [
     meta: {title: '企業服務'}
   },
   {
+    path: '/location',
+    name: 'Location',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Location.vue'),
+    meta: {title: '銷售據點'}
+  },
+  {
     path: '/news',
     name: 'News',
     component: () => import(/* webpackChunkName: "about" */ '../views/News.vue'),
@@ -39,6 +45,12 @@ const routes = [
     path: '/product',
     name: 'Product',
     component: () => import(/* webpackChunkName: "about" */ '../views/Product.vue'),
+    meta: {title: '商品列表'}
+  },
+  {
+    path: '/product/class_:id',
+    name: 'ProductSection',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ProductSection.vue'),
     meta: {title: '商品列表'}
   },
   {

@@ -16,19 +16,24 @@
             <div class="title_product">
               <h1>{{ item.name }}</h1>
               <div class="more">
-                <a href="product_list.html">更多商品 +</a>
+                <router-link :to="{ path: '/product/class_' + item.id }"
+                  >更多商品 +</router-link
+                >
               </div>
             </div>
             <div class="row prod-list">
-              <div class="col-xs-6 col-sm-4" v-for="i in item.product_list" :key="i.id">
-                <a href="product_info.html">
-                  <img
-                    class="prod-img img-responsive"
-                    :src="i.pic"
-                  />
-                </a>
-                <div class="prod-title">{{i.name}}</div>
-                <div class="prod-price">${{i.price}}</div>
+              <div
+                class="col-xs-6 col-sm-4"
+                v-for="i in item.product_list"
+                :key="i.id"
+              >
+                <router-link
+                  :to="{ path: '/product/class_' + i.pc_code + '/' + i.id }"
+                >
+                  <img class="prod-img img-responsive" :src="i.pic" />
+                </router-link>
+                <div class="prod-title">{{ i.name }}</div>
+                <div class="prod-price">${{ i.price }}</div>
               </div>
             </div>
           </div>
@@ -62,18 +67,21 @@ export default {
           product_list: [
             {
               id: 1,
+              pc_code: 1,
               pic: '/img/product/prds_01_【馨享】茶几.png',
               name: '【馨享】茶几',
               price: 3999,
             },
             {
               id: 2,
+              pc_code: 1,
               pic: '/img/product/prds_01-1_【馨享】休閒椅.png',
               name: '【馨享】休閒椅',
               price: 3999,
             },
             {
               id: 3,
+              pc_code: 1,
               pic: '/img/product/prds_01-2_【馨享】玄關桌.png',
               name: '【馨享】玄關桌',
               price: 3999,
@@ -86,18 +94,21 @@ export default {
           product_list: [
             {
               id: 1,
+              pc_code: 1,
               pic: '/img/product/prds-daily-01_2人位沙發.png',
               name: '【馨享】茶几',
               price: 3999,
             },
             {
               id: 2,
+              pc_code: 1,
               pic: '/img/product/prds-daily-02_休閒椅.png',
               name: '【馨享】休閒椅',
               price: 3999,
             },
             {
               id: 3,
+              pc_code: 1,
               pic: '/img/product/prds-daily-03_咖啡桌.png',
               name: '【馨享】玄關桌',
               price: 3999,
@@ -110,18 +121,21 @@ export default {
           product_list: [
             {
               id: 1,
+              pc_code: 1,
               pic: '/img/product/prds-creative-01_藝術品系列.png',
               name: '【馨享】茶几',
               price: 3999,
             },
             {
               id: 2,
+              pc_code: 1,
               pic: '/img/product/prds-creative-02_茶香水.png',
               name: '【馨享】休閒椅',
               price: 3999,
             },
             {
               id: 3,
+              pc_code: 1,
               pic: '/img/product/prds-creative-03_木器公仔.png',
               name: '【馨享】玄關桌',
               price: 3999,
@@ -134,18 +148,21 @@ export default {
           product_list: [
             {
               id: 1,
+              pc_code: 1,
               pic: '/img/product/prds-creative-food-01_食盒.png',
               name: '【馨享】茶几',
               price: 3999,
             },
             {
               id: 2,
+              pc_code: 1,
               pic: '/img/product/prds-creative-food-02_沾板.png',
               name: '【馨享】休閒椅',
               price: 3999,
             },
             {
               id: 3,
+              pc_code: 1,
               pic: '/img/product/prds-creative-food-03_木碗.png',
               name: '【馨享】玄關桌',
               price: 3999,
@@ -158,18 +175,21 @@ export default {
           product_list: [
             {
               id: 1,
+              pc_code: 1,
               pic: '/img/product/prds-creative-tool-01_豬光寶器禮盒.png',
               name: '【馨享】茶几',
               price: 3999,
             },
             {
               id: 2,
+              pc_code: 1,
               pic: '/img/product/prds-creative-tool-02_豬事順曆桌曆.png',
               name: '【馨享】休閒椅',
               price: 3999,
             },
             {
               id: 3,
+              pc_code: 1,
               pic: '/img/product/prds-creative-tool-03_鼎曆筆筒.png',
               name: '【馨享】玄關桌',
               price: 3999,
