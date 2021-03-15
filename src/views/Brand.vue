@@ -30,101 +30,15 @@
             <div class="title_inner"><span>品牌事蹟</span></div>
           </div>
           <div class="list">
-            <div class="item">
+            <div class="item" v-for="(item,index) in list" :key="item.id">
               <div class="years">
-                <div class="year">2013</div>
+                <div class="year">{{item.year}}</div>
+                <div class="now" v-if="index==list.length-1">迄今</div>
               </div>
               <div class="text">
-                <label>2013</label>
+                <label>{{item.year}}</label>
                 <ul class="desc">
-                  <li>永興傢俱集團執行長葉武東先生創立『青木工坊』</li>
-                </ul>
-              </div>
-            </div>
-            <div class="item">
-              <div class="years">
-                <div class="year">2015</div>
-              </div>
-              <div class="text">
-                <label>2015</label>
-                <ul class="desc">
-                  <li>
-                    青木工坊首次受國立臺灣工藝研究發展中心邀請參與台灣文博會
-                  </li>
-                  <li>青木工坊進軍大陸地區，並與青木堂家具合作</li>
-                  <li>
-                    青木工坊參與杭州文博會、廈門文博會、上海有意思設計展
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="item">
-              <div class="years">
-                <div class="year">2016</div>
-              </div>
-              <div class="text">
-                <label>2016</label>
-                <ul class="desc">
-                  <li>參與台灣文博會、杭州文博會、廈門文博會</li>
-                  <li>青木工坊成立上海旗艦店</li>
-                </ul>
-              </div>
-            </div>
-            <div class="item">
-              <div class="years">
-                <div class="year">2017</div>
-              </div>
-              <div class="text">
-                <label>2017</label>
-                <ul class="desc">
-                  <li>參與台灣文博會、杭州文博會、廈門文博會</li>
-                  <li>青木工坊於國立傳統藝術中心-宜蘭園區成立台灣旗艦店</li>
-                  <li>
-                    青木工坊首次與『美好關係』團隊合作，進行士東市場改造計畫
-                  </li>
-                  <li>
-                    青木工坊首次開立『魯班傳習所』專業木藝課程，邀請到李萬財大師蒞臨教導
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="item">
-              <div class="years">
-                <div class="year">2018</div>
-              </div>
-              <div class="text">
-                <label>2018</label>
-                <ul class="desc">
-                  <li>參與台灣文博會、杭州文博會、台灣國際美食展</li>
-                  <li>參與並贊助『2018宜蘭椅國際設計大賞』</li>
-                  <li>與永興傢俱集團共同策辦『木·生 - 遇見工藝、遇見木』</li>
-                  <li>參與『美好關係』美好書席計畫</li>
-                  <li>策辦『李萬財一甲子特展』</li>
-                </ul>
-              </div>
-            </div>
-            <div class="item">
-              <div class="years">
-                <div class="year">2019</div>
-                <div class="now">迄今</div>
-              </div>
-              <div class="text">
-                <label>2019</label>
-                <ul class="desc">
-                  <li>參與台灣文博會、杭州文博會</li>
-                  <li>
-                    與全聯善美的文化藝術基金會合作策辦『傳藝木作一條街』
-                  </li>
-                  <li>
-                    與一間二顧、樂山教養院共同策劃『回家Fun創藝』共學課程
-                  </li>
-                  <li>
-                    與台北市松山區民族國民小學、台灣家具產業協會、全聯善美的文化藝術基金會共同舉辦【趣·傳藝】民族國小美術班木雕特展
-                  </li>
-                  <li>
-                    參與國立臺北科技大學木藝培育暨設計研發中心舉辦的展覽『木·作·家
-                    15+1木藝聯盟成果展』
-                  </li>
+                  <li v-for="i in item.sub" :key="i.id">{{i.con}}</li>
                 </ul>
               </div>
             </div>
@@ -143,11 +57,107 @@ export default {
   },
   data() {
     return {
-      bread_list:[
-            {id:1,name:'首頁',url:'/'},
-            {id:2,name:'關於我們',url:'#'},
-            {id:3,name:'品牌介紹',url:'#'}
-        ]
+      bread_list: [
+        { id: 1, name: '首頁', url: '/' },
+        { id: 2, name: '關於我們', url: '#' },
+        { id: 3, name: '品牌介紹', url: '#' },
+      ],
+      list: [
+        {
+          id: 1,
+          year: 2013,
+          sub: [{ id: 1, con: '永興傢俱集團執行長葉武東先生創立『青木工坊』' }],
+        },
+        {
+          id: 2,
+          year: 2015,
+          sub: [
+            {
+              id: 1,
+              con: '青木工坊首次受國立臺灣工藝研究發展中心邀請參與台灣文博會',
+            },
+            { id: 2, con: '青木工坊進軍大陸地區，並與青木堂家具合作' },
+            {
+              id: 3,
+              con: '青木工坊參與杭州文博會、廈門文博會、上海有意思設計展',
+            },
+          ],
+        },
+        {
+          id: 3,
+          year: 2016,
+          sub: [
+            {
+              id: 1,
+              con: '參與台灣文博會、杭州文博會、廈門文博會',
+            },
+            { id: 2, con: '青木工坊成立上海旗艦店' },
+          ],
+        },
+        {
+          id: 4,
+          year: 2017,
+          sub: [
+            {
+              id: 1,
+              con: '參與台灣文博會、杭州文博會、廈門文博會',
+            },
+            { id: 2, con: '青木工坊於國立傳統藝術中心-宜蘭園區成立台灣旗艦店' },
+            {
+              id: 3,
+              con: '青木工坊首次與『美好關係』團隊合作，進行士東市場改造計畫',
+            },
+            {
+              id: 4,
+              con:
+                '青木工坊首次開立『魯班傳習所』專業木藝課程，邀請到李萬財大師蒞臨教導',
+            },
+          ],
+        },
+        {
+          id: 5,
+          year: 2018,
+          sub: [
+            {
+              id: 1,
+              con: '參與台灣文博會、杭州文博會、台灣國際美食展',
+            },
+            { id: 2, con: '參與並贊助『2018宜蘭椅國際設計大賞』' },
+            {
+              id: 3,
+              con: '與永興傢俱集團共同策辦『木·生 - 遇見工藝、遇見木』',
+            },
+            { id: 4, con: '參與『美好關係』美好書席計畫' },
+            { id: 5, con: '策辦『李萬財一甲子特展』' },
+          ],
+        },
+        {
+          id: 6,
+          year: 2019,
+          sub: [
+            {
+              id: 1,
+              con: '參與台灣文博會、杭州文博會',
+            },
+            {
+              id: 2,
+              con: '與全聯善美的文化藝術基金會合作策辦『傳藝木作一條街』',
+            },
+            {
+              id: 3,
+              con: '與一間二顧、樂山教養院共同策劃『回家Fun創藝』共學課程',
+            },
+            {
+              id: 4,
+              con: '與台北市松山區民族國民小學、台灣家具產業協會、全聯善美的文化藝術基金會共同舉辦【趣·傳藝】民族國小美術班木雕特展',
+            },
+            {
+              id: 5,
+              con: '參與國立臺北科技大學木藝培育暨設計研發中心舉辦的展覽『木·作·家 15+1木藝聯盟成果展』',
+            },
+          ],
+        },
+      ],
     }
   },
 }
@@ -277,12 +287,10 @@ export default {
   z-index: 3;
 }
 .brand .bottom .list .item:nth-child(2n + 1) .year::before {
-  border-color: #ac8544 transparent transparent
-    transparent;
+  border-color: #ac8544 transparent transparent transparent;
 }
 .brand .bottom .list .item:nth-child(2n) .year::before {
-  border-color: #d1ae88 transparent transparent
-    transparent;
+  border-color: #d1ae88 transparent transparent transparent;
 }
 .brand .bottom .list .item .year::after {
   content: '';
@@ -290,8 +298,7 @@ export default {
   height: 0;
   border-style: solid;
   border-width: 13px 26px 0 26px;
-  border-color: #fff transparent transparent
-    transparent;
+  border-color: #fff transparent transparent transparent;
   position: absolute;
   bottom: -13px;
   left: 50%;
