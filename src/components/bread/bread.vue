@@ -2,26 +2,36 @@
   <div class="container">
     <div class="bread">
       <ul>
-        <li v-for="item in bread_count" :key="item.id"><router-link :to="{ path: item.url }">{{ item.name }}</router-link></li>
-        <li>{{bread_list[bread_list.length-1].name}}</li>
+        <li v-for="item in bread_count" :key="item.id">
+          <router-link :to="{ path: item.url }">{{ item.name }}</router-link>
+        </li>
+        <li>{{ bread_list[bread_list.length - 1].name }}</li>
       </ul>
     </div>
-    <div class="b_title">品牌介紹<span>|</span>Brand</div>
+    <bigTitle v-if="bigTitle_open"></bigTitle>
   </div>
 </template>
 <script>
+import bigTitle from '@/components/bread/bigTitle.vue'
 export default {
   props: {
     bread_list: Array,
+    bigTitle_open: {
+      type: Boolean,
+      default: true,
+    },
   },
-  computed:{
-    bread_count(){
-      let last = this.bread_list.length-1
-      let data = this.bread_list.slice(0,last)
+  components: {
+    bigTitle,
+  },
+  computed: {
+    bread_count() {
+      let last = this.bread_list.length - 1
+      let data = this.bread_list.slice(0, last)
 
       return data
-    }
-  }
+    },
+  },
 }
 </script>
 <style scoped>

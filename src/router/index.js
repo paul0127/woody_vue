@@ -36,6 +36,12 @@ const routes = [
     meta: {title: '最新消息'}
   },
   {
+    path: '/product',
+    name: 'Product',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Product.vue'),
+    meta: {title: '商品列表'}
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue'),
