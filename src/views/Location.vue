@@ -9,7 +9,7 @@
             viewBox="0 0 601.36 714.12"
             style="enable-background: new 0 0 601.36 714.12"
           >
-            <g id="juming" class="map_btn">
+            <g id="juming" class="map_btn" @click="openPop('juming')">
               <path
                 id="newtaipei"
                 class="st0"
@@ -676,7 +676,7 @@ RU5ErkJggg=="
 	c-3.68,5.57-1.36,7.33,0.62,11.37c1.7,3.48,2.62,7.54,4.54,11.2c3.25,6.2,9.96,3.5,12.91,7.66c1.08,1.52,2,5.87,2.66,7.86
 	c1.62,4.89,1.68,3.56,6.47,3.94c2.11,0.16,8.84,6.57,15.39,2.18C208.74,337.55,208.34,330.45,214.31,329.59"
             />
-            <g id="woody" class="map_btn">
+            <g id="woody" class="map_btn" @click="openPop('woody')">
               <path
                 id="yilan"
                 class="st4"
@@ -925,7 +925,7 @@ wFkOQ/T99Evx+Ebug42yUTbKRtkoG2WjbJSN8vtY/r8AAwCAiqTm7iGnrwAAAABJRU5ErkJggg=="
 		c3.02-2.43,4.96-6.14,4.96-10.32C371.76,225.83,365.61,219.81,358.1,220.04z"
               />
             </g>
-            <g id="hinoki" class="map_btn">
+            <g id="hinoki" class="map_btn" @click="openPop('hinoki')">
               <path
                 id="chiayi"
                 class="st0"
@@ -2871,7 +2871,7 @@ SUVORK5CYII="
 	c-5.89,0.35-13,2.73-16.76-1.42c-1.62,0.38-1.65,0.89-3.35,1.25c-5.18,1.12-5.38-0.67-7.51,6.54c-3.5,11.88-3.81,5.25-5.26,8.9
 	c-0.46,1.15-0.2,3.38-0.25,4.7c-0.21,6.33-4.37,7.52-5.25,13.17C102.64,411.23,102.05,423.33,103.25,426.02"
             />
-            <g id="cmcp" class="map_btn">
+            <g id="cmcp" class="map_btn" @click="openPop('cmcp')">
               <path
                 id="changhua"
                 class="st0"
@@ -3624,7 +3624,7 @@ YDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAYDAaDwWAwGAwGg6Ex
 	c-1.84,0.56-3.58,1.85-4.33,2.55c-0.47,0.44-0.86,1.05-1.25,1.67c-0.34,0.53-0.68,1.06-1.1,1.54c-1.67,1.92-3.03,2.85-4.07,3.57
 	C318.5,141.59,317.78,142.08,318.23,147.12"
             />
-            <g id="hpipark" class="map_btn">
+            <g id="hpipark" class="map_btn" @click="openPop('hpipark')">
               <path
                 id="keelung"
                 class="st4"
@@ -6725,23 +6725,26 @@ GAwGg8FgMBgMBoPBYDAYDAaDwWAwGEmF/y/AAFWgqbFkE9ZHAAAAAElFTkSuQmCC"
               />
             </g>
           </svg>
-          <div class="popup">
+          <div
+            class="popup"
+            :class="{ active: pop_open, red: this.pop_line == 'woody' }"
+          >
             <div class="cross">
               <i class="fa fa-times-circle cross_btn"></i>
             </div>
             <div class="img">
-              <img src="/img/location/據點_宜蘭333X190.png" />
+              <img :src="pop_info.pic" />
             </div>
             <div class="text">
               <div class="title">
-                宜蘭-國立傳統藝術中心(宜蘭園區) -青木工坊·傳藝館
+                {{ pop_info.name }}
               </div>
               <div class="addr">
-                26841宜蘭縣五結鄉五濱路二段201號(青木工坊)
+                {{ pop_info.address }}
               </div>
             </div>
           </div>
-          <div class="map_line"></div>
+          <div class="map_line" :class="pop_line"></div>
         </div>
         <div class="abroad">
           <div class="b_title">海外據點<span>|</span>Branch</div>
@@ -6758,7 +6761,7 @@ GAwGg8FgMBgMBoPBYDAYDAaDwWAwGEmF/y/AAFWgqbFkE9ZHAAAAAElFTkSuQmCC"
 <script>
 import bread from '@/components/bread/bread.vue'
 export default {
-  name: 'Artisan',
+  name: 'Location',
   components: {
     bread,
   },
@@ -6768,7 +6771,53 @@ export default {
         { id: 1, name: '首頁', url: '/' },
         { id: 2, name: '據點', url: '#' },
       ],
+      pop_open: 0,
+      pop_line: '',
+      pop_info: { pic: '', name: '', address: '' },
+      location: {
+        woody: {
+          pic: '/img/location/據點_宜蘭333X190.png',
+          name: '宜蘭-國立傳統藝術中心(宜蘭園區)-青木工坊·傳藝館',
+          address: '26841宜蘭縣五結鄉五濱路二段201號(青木工坊)',
+        },
+        hpipark: {
+          pic: '/img/location/據點_基隆333X190.png',
+          name: '基隆-和平島公園',
+          address: '202基隆市中正區平一路360號',
+        },
+        juming: {
+          pic: '/img/location/據點_新北333X190.png',
+          name: '新北市-朱銘美術館',
+          address: '208新北市金山區西勢湖2號',
+        },
+        cmcp: {
+          pic: '/img/location/據點_彰化333X190.png',
+          name: '彰化-成美文化園區',
+          address: '512彰化縣永靖鄉中山路二段60號',
+        },
+        hinoki: {
+          pic: '/img/location/據點_嘉義333X190.png',
+          name: '嘉義-檜意森活村',
+          address: '600嘉義市東區林森東路1號',
+        },
+      },
     }
+  },
+  methods: {
+    openPop(local) {
+      if (local == this.pop_line) {
+        this.pop_open = 0
+        this.pop_line = ''
+      } else {
+        this.pop_open = 0
+
+        setTimeout(() => {
+          this.pop_open = 1
+          this.pop_line = local
+          this.pop_info = this.location[local]
+        }, 300)
+      }
+    },
   },
 }
 </script>
@@ -6782,8 +6831,8 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  border: 2px dashed var(--store-popup-border-color);
-  background-color: var(--store-popup-background);
+  border: 2px dashed #ff6600;
+  background-color: #f7efe7;
   border-radius: 20px;
   padding: 15px;
   transform: translate(-25%, 10%) scale(0);
@@ -6792,7 +6841,7 @@ export default {
   width: 375px;
 }
 .store .location .popup.red {
-  border-color: var(--store-popup-red-border-color);
+  border-color: #fe3600;
 }
 .store .location .popup.active {
   transform: translate(-25%, 10%) scale(1);
@@ -6807,8 +6856,8 @@ export default {
   color: var(--button-background);
   font-size: 2rem;
 }
-.store .location .popup .cross i:hover{
-  opacity: .8;
+.store .location .popup .cross i:hover {
+  opacity: 0.8;
 }
 .store .location .popup .img {
   margin-bottom: 0.5rem;
@@ -6853,7 +6902,7 @@ export default {
   width: 282px;
   bottom: 0;
   left: 50%;
-  transform: translate(-50%,50%);
+  transform: translate(-50%, 50%);
 }
 
 .store .abroad {
@@ -6949,7 +6998,7 @@ export default {
 #hinoki.active > #chiayi {
   fill: #a9854b;
 }
-.map_line{
+.map_line {
   position: absolute;
   border-bottom: 3px dashed #a9854b;
   transform-origin: left;
@@ -6968,7 +7017,7 @@ export default {
 }
 .map_line.woody {
   width: 32%;
-  border-color: var(--store-popup-red-border-color);
+  border-color: #fe3600;
   top: 24%;
   left: 31%;
   transform: rotate(25deg);
