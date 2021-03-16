@@ -42,6 +42,18 @@ const routes = [
     meta: {title: '最新消息'}
   },
   {
+    path: '/news/class_:id',
+    name: 'News',
+    component: () => import(/* webpackChunkName: "about" */ '../views/News.vue'),
+    meta: {title: '最新消息'}
+  },
+  {
+    path: '/news/class_:id/:id',
+    name: 'NewsInfo',
+    component: () => import(/* webpackChunkName: "about" */ '../views/NewsInfo.vue'),
+    meta: {title: '最新消息 內頁'}
+  },
+  {
     path: '/product',
     name: 'Product',
     component: () => import(/* webpackChunkName: "about" */ '../views/Product.vue'),
@@ -52,6 +64,12 @@ const routes = [
     name: 'ProductSection',
     component: () => import(/* webpackChunkName: "about" */ '../views/ProductSection.vue'),
     meta: {title: '商品列表'}
+  },
+  {
+    path: '/product/class_:id/:id',
+    name: 'ProductInfo',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ProductInfo.vue'),
+    meta: {title: '商品內頁'}
   },
   {
     path: '/login',
