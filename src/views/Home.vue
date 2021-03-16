@@ -116,7 +116,7 @@ export default {
         {
           id: 1,
           pc_code: 1,
-          pic: '/img/木生—一流匠人教你從零開始學木作%20╳匠人.png',
+          pic: '/img/木生.png',
           name: '木・生',
           source: '樂木文化',
           src: 'https://www.youtube.com/watch?v=Sgo3JlTSIzw',
@@ -124,7 +124,7 @@ export default {
         {
           id: 2,
           pc_code: 1,
-          pic: '/img/2019回家Fun創藝木箱鼓音樂共學.png',
+          pic: '/img/回家.png',
           name: '2019回家Fun創藝木箱鼓音樂共學',
           source: '一間二顧公益行銷平台',
           src: 'https://www.youtube.com/watch?v=SS749VzFrCg',
@@ -132,7 +132,7 @@ export default {
         {
           id: 3,
           pc_code: 1,
-          pic: 'img/青木工坊．傳藝館│動手玩木工.png',
+          pic: '/img/青木工坊.png',
           name: '青木工坊·傳藝館｜動手玩木工',
           source: '青木工坊傳藝館',
           src: 'https://www.youtube.com/watch?v=4Yqdb-yda74',

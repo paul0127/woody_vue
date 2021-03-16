@@ -16,7 +16,7 @@
           <router-link class="item" :to="{ path: '/product/class_'+item.pc_code+'/'+item.id }">
             <div
               class="img"
-              :style="{ backgroundImage: 'url(' + item.pic + ')' }"
+              :style="{ backgroundImage: 'url(' + require('@/assets' + item.pic) + ')' }"
             ></div>
             <div class="title">{{ item.name }}</div>
             <div class="price"><span>$</span>{{item.price}}</div>

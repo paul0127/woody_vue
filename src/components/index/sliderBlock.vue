@@ -8,7 +8,7 @@
       :dots="true"
       :loop="true"
     >
-      <img v-for="item in banner_list" :key="item.id" :src="item.pic" />
+      <img v-for="item in banner_list" :key="item.id" :src="require('@/assets'+item.pic)" />
     </carousel>
     <div class="go_to"></div>
   </div>
@@ -72,7 +72,7 @@ export default {
 }
 .slider_block .go_to::after {
   content: '';
-  background-image: url(/img/Group_25.png);
+  background-image: url(~@/assets/img/Group_25.png);
   background-size: 100% 100%;
   display: block;
   width: 28px;

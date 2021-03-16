@@ -30,7 +30,10 @@
                 <router-link
                   :to="{ path: '/product/class_' + i.pc_code + '/' + i.id }"
                 >
-                  <img class="prod-img img-responsive" :src="i.pic" />
+                  <img
+                    class="prod-img img-responsive"
+                    :src="require('@/assets' + i.pic)"
+                  />
                 </router-link>
                 <div class="prod-title">{{ i.name }}</div>
                 <div class="prod-price">${{ i.price }}</div>

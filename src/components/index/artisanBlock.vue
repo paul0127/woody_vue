@@ -22,7 +22,7 @@ export default {
   width: 100%;
   height: 0;
   padding-bottom: 50.9%;
-  background-image: url(/img/img-artisan-artisanSection.png);
+  background-image: url(~@/assets/img/img-artisan-artisanSection.png);
   background-size: cover;
   background-position: center center;
 }

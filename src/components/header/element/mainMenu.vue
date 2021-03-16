@@ -50,7 +50,7 @@ ul.main_menu > li > a:hover {
   opacity: 0.8;
 }
 ul.main_menu > li.sub > a::after {
-  content: url(/img/caret-down.svg);
+  content: url(~@/assets/img/caret-down.svg);
   margin: 0 0 0 0.5rem;
   display: block;
   transform: translateY(-3px);

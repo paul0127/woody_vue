@@ -6,9 +6,9 @@
         <div class="list">
           <div class="item">
             <div class="img">
-              <img src="/img/service/494X283企業服務_01.png" />
+              <img src="@/assets/img/service/494X283企業服務_01.png" />
               <div class="circle">
-                <img src="/img/service/25X25企業服務_01.png" />
+                <img src="@/assets/img/service/25X25企業服務_01.png" />
               </div>
             </div>
             <div class="text">
@@ -17,9 +17,9 @@
           </div>
           <div class="item">
             <div class="img">
-              <img src="/img/service/494X283企業服務_02.png" />
+              <img src="@/assets/img/service/494X283企業服務_02.png" />
               <div class="circle">
-                <img src="/img/service/28X24企業服務_02.png" />
+                <img src="@/assets/img/service/28X24企業服務_02.png" />
               </div>
             </div>
             <div class="text">
@@ -31,9 +31,9 @@
           </div>
           <div class="item">
             <div class="img">
-              <img src="/img/service/494X283企業服務_03.png" />
+              <img src="@/assets/img/service/494X283企業服務_03.png" />
               <div class="circle">
-                <img src="/img/service/25X25企業服務_03.png" />
+                <img src="@/assets/img/service/25X25企業服務_03.png" />
               </div>
             </div>
             <div class="text">
@@ -42,9 +42,9 @@
           </div>
           <div class="item">
             <div class="img">
-              <img src="/img/service/494X283企業服務_04.png" />
+              <img src="@/assets/img/service/494X283企業服務_04.png" />
               <div class="circle">
-                <img src="/img/service/28X26企業服務_04.png" />
+                <img src="@/assets/img/service/28X26企業服務_04.png" />
               </div>
             </div>
             <div class="text">

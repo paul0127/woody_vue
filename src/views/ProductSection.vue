@@ -12,7 +12,7 @@
             <a href="#">
               <img
                 class="img-responsive"
-                src="/img/product/prds-banner-01.png"
+                src="@/assets/img/product/prds-banner-01.png"
               />
             </a>
           </div>
@@ -29,7 +29,10 @@
                 <router-link
                   :to="{ path: '/product/class_' + i.pc_code + '/' + i.id }"
                 >
-                  <img class="prod-img img-responsive" :src="i.pic" />
+                  <img
+                    class="prod-img img-responsive"
+                    :src="require('@/assets' + i.pic)"
+                  />
                 </router-link>
                 <div class="prod-title">{{ i.name }}</div>
                 <div class="prod-price">${{ i.price }}</div>
@@ -53,7 +56,7 @@ export default {
   components: {
     bread,
     sideMenu,
-    pager
+    pager,
   },
   data() {
     return {

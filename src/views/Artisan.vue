@@ -3,7 +3,7 @@
     <bread :bread_list="bread_list"></bread>
     <div class="artisan_item left">
       <div class="img">
-        <img src="/img/artisan/李萬財.jpg" />
+        <img src="@/assets/img/artisan/李萬財.jpg" />
       </div>
       <div class="text">
         <div class="main">
@@ -41,7 +41,7 @@
     </div>
     <div class="artisan_item right">
       <div class="img">
-        <img src="/img/artisan/張水連.jpg" />
+        <img src="@/assets/img/artisan/張水連.jpg" />
       </div>
       <div class="text">
         <div class="main">
@@ -64,11 +64,11 @@
       </div>
     </div>
     <div class="middle_img">
-      <img src="/img/artisan/img1-artisanSection.png" />
+      <img src="@/assets/img/artisan/img1-artisanSection.png" />
     </div>
     <div class="artisan_item left">
       <div class="img">
-        <img src="/img/artisan/游源龍.jpg" />
+        <img src="@/assets/img/artisan/游源龍.jpg" />
       </div>
       <div class="text">
         <div class="main">
@@ -93,7 +93,7 @@
     </div>
     <div class="artisan_item right">
       <div class="img">
-        <img src="/img/artisan/林建宇.jpg" />
+        <img src="@/assets/img/artisan/林建宇.jpg" />
       </div>
       <div class="text">
         <div class="main">
@@ -112,7 +112,7 @@
       </div>
     </div>
     <div class="bottom_img">
-      <img src="/img/artisan/img2-artisanSection.png" />
+      <img src="@/assets/img/artisan/img2-artisanSection.png" />
     </div>
   </div>
 </template>

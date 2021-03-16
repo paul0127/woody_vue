@@ -6853,7 +6853,7 @@ export default {
   margin-bottom: 5px;
 }
 .store .location .popup .cross i {
-  color: var(--button-background);
+  color: #b28146;
   font-size: 2rem;
 }
 .store .location .popup .cross i:hover {
@@ -6924,7 +6924,7 @@ export default {
 }
 .store .abroad .list .item::before {
   content: '';
-  background-image: url(/img/location/據點_地標35X49.png);
+  background-image: url(~@/assets/img/location/據點_地標35X49.png);
   background-repeat: no-repeat;
   background-size: contain;
   align-self: stretch;

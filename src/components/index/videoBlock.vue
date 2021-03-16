@@ -7,26 +7,29 @@
       </div>
       <!--影片條列-->
       <div class="list row">
-        <div class="col-md-4" v-for="(item,index) in video_list" :key="item.id">
-          <div
-            class="item"
-            :key="index"
-            @click="imageIndex = index"
-          >
+        <div
+          class="col-md-4"
+          v-for="(item, index) in video_list"
+          :key="item.id"
+        >
+          <div class="item" :key="index" @click="imageIndex = index">
             <div
               class="img"
-              :style="{ backgroundImage: 'url(' + item.pic + ')' }"
+              :style="{
+                backgroundImage: 'url(' + require('@/assets' + item.pic) + ')',
+              }"
             ></div>
-            <div class="title">{{item.name}}</div>
-            <div class="source">出處；{{item.source}}</div>
+            <div class="title">{{ item.name }}</div>
+            <div class="source">出處；{{ item.source }}</div>
           </div>
         </div>
       </div>
     </div>
-    <CoolLightBox 
-      :items="video_list" 
+    <CoolLightBox
+      :items="video_list"
       :index="imageIndex"
-      @close="imageIndex = null">
+      @close="imageIndex = null"
+    >
     </CoolLightBox>
   </section>
 </template>
@@ -38,11 +41,16 @@ export default {
   props: { video_info: Object, video_list: Array },
   data() {
     return {
-      imageIndex: null
+      imageIndex: null,
     }
   },
   components: {
     CoolLightBox,
+  },
+  methods: {
+    imgSrc(img) {
+      return require('@/assets' + img)
+    },
   },
 }
 </script>

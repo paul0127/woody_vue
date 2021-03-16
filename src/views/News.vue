@@ -11,7 +11,7 @@
           <div class="image">
             <div
               class="img"
-              :style="{ backgroundImage: 'url(' + item.pic + ')' }"
+              :style="{ backgroundImage: 'url(' + require('@/assets' + item.pic) + ')' }"
             ></div>
           </div>
           <div class="text">

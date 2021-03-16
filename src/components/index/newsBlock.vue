@@ -42,7 +42,7 @@ export default {
 </script>
 <style>
 .news_block {
-  background-image: url(/img/img-newsSection.png);
+  background-image: url('~@/assets/img/img-newsSection.png');
   background-size: cover;
   background-position: center center;
   padding: 5rem 0;

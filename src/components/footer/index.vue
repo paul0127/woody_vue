@@ -3,7 +3,7 @@
     <div class="container">
       <div class="footer_content">
         <div class="footer_logo">
-          <router-link :to="{ path: '/' }"><img :src="info.footer_logo"/></router-link>
+          <router-link :to="{ path: '/' }"><img :src="require('@/assets'+info.footer_logo)"/></router-link>
         </div>
         <div class="footer_link">
           <ul>
@@ -22,16 +22,16 @@
           <div class="social">
             <ul>
               <li>
-                <a target="_blank" :href="info.pinkoi_url"><img src="/img/img-pinkoi-white.png"/></a>
+                <a target="_blank" :href="info.pinkoi_url"><img src="@/assets/img/img-pinkoi-white.png"/></a>
               </li>
               <li>
-                <a target="_blank" :href="info.fb_url"><img src="/img/icon-facebook.svg"/></a>
+                <a target="_blank" :href="info.fb_url"><img src="@/assets/img/icon-facebook.svg"/></a>
               </li>
               <li>
-                <a target="_blank" :href="info.ig_url"><img src="/img/icon-instagram.svg"/></a>
+                <a target="_blank" :href="info.ig_url"><img src="@/assets/img/icon-instagram.svg"/></a>
               </li>
               <li>
-                <a target="_blank" :href="info.line_url"><img src="/img/icon-line.svg"/></a>
+                <a target="_blank" :href="info.line_url"><img src="@/assets/img/icon-line.svg"/></a>
               </li>
             </ul>
           </div>

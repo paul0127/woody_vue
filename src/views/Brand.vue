@@ -5,7 +5,7 @@
       <div class="container">
         <div class="top">
           <div class="img">
-            <img src="/img/brand/205X558_品牌介紹01.png" />
+            <img src="@/assets/img/brand/205X558_品牌介紹01.png" />
           </div>
           <div class="text">
             <div class="title"><span>緣起</span></div>
@@ -24,7 +24,7 @@
         </div>
         <div class="bottom">
           <div class="img">
-            <img src="/img/brand/1004X205_品牌介紹02.png" />
+            <img src="@/assets/img/brand/1004X205_品牌介紹02.png" />
           </div>
           <div class="title">
             <div class="title_inner"><span>品牌事蹟</span></div>
@@ -162,7 +162,7 @@ export default {
   },
 }
 </script>
-<style scoped>
+<style>
 .brand .top {
   display: flex;
   justify-content: center;

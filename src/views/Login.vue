@@ -5,7 +5,7 @@
     <div class="container login-page">
       <div class="row">
         <div class="hidden-xs col-xs-12 col-sm-12">
-          <img class="img-responsive" src="/img/login/buy.png" />
+          <img class="img-responsive" src="@/assets/img/login/buy.png" />
         </div>
         <hr />
         <div class="col-xs-12 col-sm-8">
@@ -83,7 +83,7 @@
                 <div class="col-sm-5">
                   <img
                     id="CaptchaImage"
-                    src="/img/login/Generate.gif"
+                    src="@/assets/img/login/Generate.gif"
                     style="max-width: 100%"
                   />
                   <input
