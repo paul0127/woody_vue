@@ -1,12 +1,12 @@
 <template>
   <ul class="tool_bar">
-    <li class="login_btn"><router-link :to="{path : 'login'}">登入</router-link></li>
+    <li class="login_btn"><router-link :to="{path : '/login'}">登入</router-link></li>
     <li class="user_btn sub" :class="{ active: user_sub_open }">
       <a @click="user_open"><img src="@/assets/img/user.svg"/></a>
       <div class="sub_menu">
         <ul>
-          <li><router-link :to="{path : 'member'}">會員資料</router-link></li>
-          <li><router-link :to="{path : 'policy'}">購物須知</router-link></li>
+          <li><router-link :to="{path : '/member'}">會員資料</router-link></li>
+          <li><router-link :to="{path : '/policy'}">購物須知</router-link></li>
           <li><router-link :to="{path : '/member/order'}">訂單查詢</router-link></li>
         </ul>
       </div>

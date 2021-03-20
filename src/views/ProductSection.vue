@@ -135,7 +135,7 @@ export default {
         {
           id: 10,
           pc_code: 1,
-          pic: '/img/product/prds-creative-tool-10_【遊思】木質筆.png',
+          pic: '/img/product/木質筆.png',
           name: '【遊思】木質筆',
           price: 3999,
         },

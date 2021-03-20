@@ -11,24 +11,18 @@
           <div class="product_info">
             <div class="product_top">
               <div class="product_pic">
-                <img
-                  class="main_pic"
-                  src="@/assets/img/product/隨身碟.png"
-                />
+                <img class="main_pic" :src="require('@/assets' + main_pic)" />
                 <ul class="small_pic">
                   <!--data-img 需要放顯示的大圖-->
                   <li
-                    class="active"
-                    :style="{ backgroundImage: 'url(' + require('@/assets/img/product/木質筆.png') + ')' }"
-                  ></li>
-                  <li
-                    :style="{ backgroundImage: 'url(' + require('@/assets/img/product/木質筆.png') + ')' }"
-                  ></li>
-                  <li
-                    :style="{ backgroundImage: 'url(' + require('@/assets/img/product/木質筆.png') + ')' }"
-                  ></li>
-                  <li
-                    :style="{ backgroundImage: 'url(' + require('@/assets/img/product/木質筆.png') + ')' }"
+                    :class="{ active: index == choose_pic }"
+                    v-for="(pic, index) in pic_list"
+                    :key="pic.id"
+                    :style="{
+                      backgroundImage:
+                        'url(' + require('@/assets' + pic.pic) + ')',
+                    }"
+                    @click="choosePic(index)"
                   ></li>
                 </ul>
               </div>
@@ -38,29 +32,16 @@
                     <img src="@/assets/img/product/facebook.svg" />分享
                   </div>
                 </div>
-                <h1>【窗語】隨身碟</h1>
-                <div class="desc">
-                  產品編瑪:1234567890 <br />
-                  材質:木 <br />
-                  規格大小:尺寸:64x 18x10mm,<br />
-                  格紋款:水品玻璃,核桃木,16G內存; <br />
-                  窗花款:水品玻璃,炭化<br />
-                </div>
-                <div class="price">原價 $900</div>
+                <h1>{{ product_info.name }}</h1>
+                <div class="desc" v-html="product_info.desc"></div>
+                <div class="price">原價 ${{ product_info.price }}</div>
                 <div class="purchase">
                   <div class="qty">
-                    <button class="minus" onclick="product_qty(0)">
+                    <button class="minus">
                       <img src="@/assets/img/product/minus.svg" />
                     </button>
-                    <input
-                      id="qty"
-                      type="number"
-                      value="1"
-                      min="1"
-                      max="10"
-                      onchange="check_number(this)"
-                    />
-                    <button class="plus" onclick="product_qty(1)">
+                    <input type="number" value="1" min="1" max="10" />
+                    <button class="plus">
                       <img src="@/assets/img/product/plus.svg" />
                     </button>
                   </div>
@@ -70,14 +51,12 @@
             </div>
             <div class="product_desc">
               <ul class="tab_nav">
-                <li class="active" data-tab="tab_01">商品介紹</li>
-                <li data-tab="tab_02">商品規格</li>
+                <li :class="{active:now_tab==0}" @click="tabs_check(0)">商品介紹</li>
+                <li :class="{active:now_tab==1}" @click="tabs_check(1)">商品規格</li>
               </ul>
-              <div id="tab_01" class="tab_panel active">
+              <div class="tab_panel" :class="{active:now_tab==0}">
                 <div class="editor">
-                  <img
-                    src="@/assets/img/product/隨身碟.png"
-                  />
+                  <img src="@/assets/img/product/隨身碟.png" />
                   <p>
                     源自東方的窗花民間藝術圖騰,結合了現代工藝的水晶玻璃雷雕與木料,<br />
                     讓傳統藝術以嶄新的樣貌呈現在產品之上,水晶玻璃的透視感,仿佛透過<br />
@@ -86,7 +65,7 @@
                   </p>
                 </div>
               </div>
-              <div id="tab_02" class="tab_panel">
+              <div class="tab_panel" :class="{active:now_tab==1}">
                 <div class="editor">品名:【窗語】隨身碟</div>
               </div>
             </div>
@@ -142,18 +121,45 @@ export default {
   name: 'ProductInfo',
   components: {
     bread,
-    sideMenu
+    sideMenu,
   },
   data() {
     return {
       bigTitle_open: false,
+      main_pic: '',
+      choose_pic: 0,
+      now_tab: 0,
       bread_list: [
         { id: 1, name: '首頁', url: '/' },
         { id: 2, name: '商品專區', url: '#' },
-        { id: 2, name: '文創商品', url: '#' },
-        { id: 2, name: '文具類', url: '#' },
-        { id: 2, name: '【窗語】隨身碟', url: '#' },
+        { id: 3, name: '文創商品', url: '#' },
+        { id: 4, name: '文具類', url: '#' },
+        { id: 5, name: '【窗語】隨身碟', url: '#' },
       ],
+      product_info: {
+        name: '【窗語】隨身碟',
+        desc:
+          '產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',
+        price: 900,
+      },
+      pic_list: [
+        { id: 1, pic: '/img/product/隨身碟.png' },
+        { id: 2, pic: '/img/product/木質筆.png' },
+        { id: 3, pic: '/img/product/隨身碟.png' },
+        { id: 4, pic: '/img/product/木質筆.png' },
+      ],
+    }
+  },
+  created() {
+    this.main_pic = this.pic_list[0].pic
+  },
+  methods: {
+    choosePic(index) {
+      this.choose_pic = index
+      this.main_pic = this.pic_list[index].pic
+    },
+    tabs_check(c){
+      this.now_tab = c
     }
   },
 }
@@ -227,7 +233,6 @@ export default {
   margin-bottom: 1.25rem;
 }
 
-
 .purchase {
   display: flex;
   justify-content: space-between;
@@ -275,7 +280,6 @@ export default {
   color: #fff;
   width: 154px;
 }
-
 
 .product_desc ul.tab_nav {
   list-style: none;
