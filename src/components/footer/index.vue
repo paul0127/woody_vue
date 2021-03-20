@@ -8,7 +8,7 @@
         <div class="footer_link">
           <ul>
             <li v-for="item in footer_list" :key="item.id">
-              <router-link :to="{ path: '/page/' + item.id }">{{
+              <router-link :to="{ path: item.url }">{{
                 item.name
               }}</router-link>
             </li>
@@ -56,11 +56,11 @@ export default {
         line_url:'https://line.me/zh-hant/'
       },
       footer_list: [
-        { id: 1, name: '關於我們', url: '#' },
-        { id: 2, name: '最新消息', url: '#' },
-        { id: 3, name: '商品介紹', url: '#' },
-        { id: 4, name: '服務據點', url: '#' },
-        { id: 5, name: '工藝師專區', url: '#' },
+        { id: 1, name: '關於我們', url: '/Brand' },
+        { id: 2, name: '最新消息', url: '/news' },
+        { id: 3, name: '商品介紹', url: '/product' },
+        { id: 4, name: '服務據點', url: '/location' },
+        { id: 5, name: '工藝師專區', url: '/artisan' },
       ],
     }
   },
