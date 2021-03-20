@@ -14,73 +14,73 @@ const routes = [
   {
     path: '/brand',
     name: 'Brand',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Brand.vue'),
+    component: () => import(/* webpackChunkName: "Brand" */ '../views/Brand.vue'),
     meta: {title: '品牌介紹'}
   },
   {
     path: '/artisan',
     name: 'Artisan',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Artisan.vue'),
+    component: () => import(/* webpackChunkName: "Artisan" */ '../views/Artisan.vue'),
     meta: {title: '工藝師介紹'}
   },
   {
     path: '/service',
     name: 'Service',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Service.vue'),
+    component: () => import(/* webpackChunkName: "Service" */ '../views/Service.vue'),
     meta: {title: '企業服務'}
   },
   {
     path: '/location',
     name: 'Location',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Location.vue'),
+    component: () => import(/* webpackChunkName: "Location" */ '../views/Location.vue'),
     meta: {title: '銷售據點'}
   },
   {
     path: '/news',
     name: 'News',
-    component: () => import(/* webpackChunkName: "about" */ '../views/News.vue'),
+    component: () => import(/* webpackChunkName: "News" */ '../views/News.vue'),
     meta: {title: '最新消息'}
   },
   {
     path: '/news/class_:id',
     name: 'News',
-    component: () => import(/* webpackChunkName: "about" */ '../views/News.vue'),
+    component: () => import(/* webpackChunkName: "News" */ '../views/News.vue'),
     meta: {title: '最新消息'}
   },
   {
     path: '/news/class_:id/:id',
     name: 'NewsInfo',
-    component: () => import(/* webpackChunkName: "about" */ '../views/NewsInfo.vue'),
+    component: () => import(/* webpackChunkName: "NewsInfo" */ '../views/NewsInfo.vue'),
     meta: {title: '最新消息 內頁'}
   },
   {
     path: '/product',
     name: 'Product',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Product.vue'),
+    component: () => import(/* webpackChunkName: "Product" */ '../views/Product.vue'),
     meta: {title: '商品列表'}
   },
   {
     path: '/product/class_:id',
     name: 'ProductSection',
-    component: () => import(/* webpackChunkName: "about" */ '../views/ProductSection.vue'),
+    component: () => import(/* webpackChunkName: "ProductSection" */ '../views/ProductSection.vue'),
     meta: {title: '商品列表'}
   },
   {
     path: '/product/class_:id/:id',
     name: 'ProductInfo',
-    component: () => import(/* webpackChunkName: "about" */ '../views/ProductInfo.vue'),
+    component: () => import(/* webpackChunkName: "ProductInfo" */ '../views/ProductInfo.vue'),
     meta: {title: '商品內頁'}
   },
   {
     path: '/login',
     name: 'Login',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue'),
+    component: () => import(/* webpackChunkName: "Login" */ '../views/Login.vue'),
     meta: {title: '會員登入'}
   },
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: 'hash',
   base: process.env.BASE_URL,
   routes
 })

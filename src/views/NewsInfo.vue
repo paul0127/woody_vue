@@ -65,8 +65,8 @@ export default {
   font-size: 0.9rem;
   padding-bottom: 10px;
   margin-bottom: 3.25rem;
-  border-bottom: 1px solid var(--text-middle-black-color);
-  color: var(--text-middle-black-color);
+  border-bottom: 1px solid #777777;
+  color: #777777;
 }
 .news_info .editor p {
   font-size: 1rem;
@@ -82,11 +82,11 @@ export default {
 .go_back a {
   text-align: center;
   margin: 0 0.5rem;
-  border: 1px solid var(--button-background);
+  border: 1px solid #b28146;
   flex: 1;
   padding: 10px;
-  background-color: var(--button-background);
-  color: var(--text-white-color);
+  background-color: #b28146;
+  color: #fff;
   text-decoration: none;
   font-size: 1rem;
 }
@@ -96,8 +96,8 @@ export default {
 .go_back a.pre,
 .go_back a.next {
   background-color: #fff;
-  color: var(--text-black-color);
-  border-color: var(--text-middle-black-color);
+  color: #333333;
+  border-color: #777777;
 }
 .go_back a.pre {
   margin-left: 0;

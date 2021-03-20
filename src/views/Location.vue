@@ -6733,7 +6733,7 @@ GAwGg8FgMBgMBoPBYDAYDAaDwWAwGEmF/y/AAFWgqbFkE9ZHAAAAAElFTkSuQmCC"
               <i class="fa fa-times-circle cross_btn"></i>
             </div>
             <div class="img">
-              <img :src="pop_info.pic" />
+              <img :src="require('@/assets' + pop_info.pic)" />
             </div>
             <div class="text">
               <div class="title">
@@ -6773,7 +6773,7 @@ export default {
       ],
       pop_open: 0,
       pop_line: '',
-      pop_info: { pic: '', name: '', address: '' },
+      pop_info: { pic: '/img/location/據點_宜蘭333X190.png', name: '', address: '' },
       location: {
         woody: {
           pic: '/img/location/據點_宜蘭333X190.png',

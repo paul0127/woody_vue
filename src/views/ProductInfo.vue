@@ -13,34 +13,22 @@
               <div class="product_pic">
                 <img
                   class="main_pic"
-                  src="@/assets/img/product/prds-creative-tool-11_【窗語】隨身碟@2x.png"
+                  src="@/assets/img/product/隨身碟.png"
                 />
                 <ul class="small_pic">
                   <!--data-img 需要放顯示的大圖-->
                   <li
                     class="active"
-                    style="
-                        background-image: url(/img/product/prds-creative-tool-11_【窗語】隨身碟.png);
-                      "
-                    data-img="/img/product/prds-creative-tool-11_【窗語】隨身碟@2x.png"
+                    :style="{ backgroundImage: 'url(' + require('@/assets/img/product/木質筆.png') + ')' }"
                   ></li>
                   <li
-                    style="
-                        background-image: url(/img/product/prds-creative-tool-10_【遊思】木質筆.png);
-                      "
-                    data-img="/img/product/prds-creative-tool-10_【遊思】木質筆@2x.png"
+                    :style="{ backgroundImage: 'url(' + require('@/assets/img/product/木質筆.png') + ')' }"
                   ></li>
                   <li
-                    style="
-                        background-image: url(/img/product/prds-creative-tool-11_【窗語】隨身碟.png);
-                      "
-                    data-img="/img/product/prds-creative-tool-11_【窗語】隨身碟@2x.png"
+                    :style="{ backgroundImage: 'url(' + require('@/assets/img/product/木質筆.png') + ')' }"
                   ></li>
                   <li
-                    style="
-                        background-image: url(/img/product/prds-creative-tool-11_【窗語】隨身碟.png);
-                      "
-                    data-img="/img/product/prds-creative-tool-11_【窗語】隨身碟@2x.png"
+                    :style="{ backgroundImage: 'url(' + require('@/assets/img/product/木質筆.png') + ')' }"
                   ></li>
                 </ul>
               </div>
@@ -88,7 +76,7 @@
               <div id="tab_01" class="tab_panel active">
                 <div class="editor">
                   <img
-                    src="@/assets/img/product/prds-creative-tool-11_【窗語】隨身碟@2x.png"
+                    src="@/assets/img/product/隨身碟.png"
                   />
                   <p>
                     源自東方的窗花民間藝術圖騰,結合了現代工藝的水晶玻璃雷雕與木料,<br />
@@ -111,7 +99,7 @@
                   <a href="#">
                     <img
                       class="prod-img img-responsive"
-                      src="@/assets/img/product/prds-creative-tool-10_【遊思】木質筆.png"
+                      src="@/assets/img/product/木質筆.png"
                     />
                   </a>
                   <div class="prod-title">【遊思】木質筆</div>
@@ -151,7 +139,7 @@ import bread from '@/components/bread/bread.vue'
 import sideMenu from '@/components/sideMenu/sideMenu.vue'
 
 export default {
-  name: 'Product',
+  name: 'ProductInfo',
   components: {
     bread,
     sideMenu
@@ -161,144 +149,10 @@ export default {
       bigTitle_open: false,
       bread_list: [
         { id: 1, name: '首頁', url: '/' },
-        { id: 2, name: '商品介紹', url: '#' },
-      ],
-      product_section: [
-        {
-          id: 1,
-          name: '家俱/馨享',
-          product_list: [
-            {
-              id: 1,
-              pc_code: 1,
-              pic: '/img/product/prds_01_【馨享】茶几.png',
-              name: '【馨享】茶几',
-              price: 3999,
-            },
-            {
-              id: 2,
-              pc_code: 1,
-              pic: '/img/product/prds_01-1_【馨享】休閒椅.png',
-              name: '【馨享】休閒椅',
-              price: 3999,
-            },
-            {
-              id: 3,
-              pc_code: 1,
-              pic: '/img/product/prds_01-2_【馨享】玄關桌.png',
-              name: '【馨享】玄關桌',
-              price: 3999,
-            },
-          ],
-        },
-        {
-          id: 2,
-          name: '家俱/日常',
-          product_list: [
-            {
-              id: 1,
-              pc_code: 1,
-              pic: '/img/product/prds-daily-01_2人位沙發.png',
-              name: '【馨享】茶几',
-              price: 3999,
-            },
-            {
-              id: 2,
-              pc_code: 1,
-              pic: '/img/product/prds-daily-02_休閒椅.png',
-              name: '【馨享】休閒椅',
-              price: 3999,
-            },
-            {
-              id: 3,
-              pc_code: 1,
-              pic: '/img/product/prds-daily-03_咖啡桌.png',
-              name: '【馨享】玄關桌',
-              price: 3999,
-            },
-          ],
-        },
-        {
-          id: 3,
-          name: '文創商品/工藝類',
-          product_list: [
-            {
-              id: 1,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-01_藝術品系列.png',
-              name: '【馨享】茶几',
-              price: 3999,
-            },
-            {
-              id: 2,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-02_茶香水.png',
-              name: '【馨享】休閒椅',
-              price: 3999,
-            },
-            {
-              id: 3,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-03_木器公仔.png',
-              name: '【馨享】玄關桌',
-              price: 3999,
-            },
-          ],
-        },
-        {
-          id: 4,
-          name: '文創商品/食器類',
-          product_list: [
-            {
-              id: 1,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-food-01_食盒.png',
-              name: '【馨享】茶几',
-              price: 3999,
-            },
-            {
-              id: 2,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-food-02_沾板.png',
-              name: '【馨享】休閒椅',
-              price: 3999,
-            },
-            {
-              id: 3,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-food-03_木碗.png',
-              name: '【馨享】玄關桌',
-              price: 3999,
-            },
-          ],
-        },
-        {
-          id: 5,
-          name: '文創商品/文具類',
-          product_list: [
-            {
-              id: 1,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-tool-01_豬光寶器禮盒.png',
-              name: '【馨享】茶几',
-              price: 3999,
-            },
-            {
-              id: 2,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-tool-02_豬事順曆桌曆.png',
-              name: '【馨享】休閒椅',
-              price: 3999,
-            },
-            {
-              id: 3,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-tool-03_鼎曆筆筒.png',
-              name: '【馨享】玄關桌',
-              price: 3999,
-            },
-          ],
-        },
+        { id: 2, name: '商品專區', url: '#' },
+        { id: 2, name: '文創商品', url: '#' },
+        { id: 2, name: '文具類', url: '#' },
+        { id: 2, name: '【窗語】隨身碟', url: '#' },
       ],
     }
   },
@@ -330,10 +184,10 @@ export default {
   cursor: pointer;
   background-size: cover;
   padding-bottom: 23%;
-  border: 2px solid var(--product-small_pic-border-color);
+  border: 2px solid #fff;
 }
 .product_top ul.small_pic li.active {
-  border: 2px solid var(--product-small_pic-active-border-color);
+  border: 2px solid #333;
 }
 .product_top ul.small_pic li:last-child {
   margin-right: 0;
@@ -359,16 +213,16 @@ export default {
   font-size: 1.5rem;
 }
 .product_text .desc {
-  background-color: var(--product-side-desc-background);
+  background-color: #eeeeee;
   padding: 10px;
   font-size: 15px;
   margin-bottom: 1.25rem;
   line-height: 1.5;
 }
 .product_text .price {
-  color: var(--text-brown-color);
+  color: #b28146;
   font-size: 1.15rem;
-  border-bottom: 1px solid var(--product-side-price-underline-color);
+  border-bottom: 1px solid #dddddd;
   padding-bottom: 1.25rem;
   margin-bottom: 1.25rem;
 }
@@ -384,8 +238,8 @@ export default {
 }
 .purchase .qty .minus,
 .purchase .qty .plus {
-  border: 1px solid var(--product-qty-button-border-color);
-  background-color: var(--product-qty-button-background);
+  border: 1px solid #dddddd;
+  background-color: #fff;
   width: 32px;
   height: 32px;
   display: flex;
@@ -396,7 +250,7 @@ export default {
 }
 .purchase .qty .minus:hover,
 .purchase .qty .plus:hover {
-  background-color: var(--product-qty-button-hover-background);
+  background-color: #ccc;
 }
 .purchase .qty .minus {
   border-top-left-radius: 5px;
@@ -410,15 +264,15 @@ export default {
 }
 .purchase .qty input {
   width: calc(100% - 64px);
-  border: 1px solid var(--product-qty-button-border-color);
+  border: 1px solid #dddddd;
   height: 32px;
   padding: 5px;
   border-radius: 0;
   outline: none;
 }
 .purchase .btn {
-  background-color: var(--product-purchase-button-background);
-  color: var(--text-white-color);
+  background-color: #ff0000;
+  color: #fff;
   width: 154px;
 }
 
@@ -427,19 +281,19 @@ export default {
   list-style: none;
   padding-left: 0;
   display: flex;
-  border-bottom: 1px solid var(--title-under-under-color);
+  border-bottom: 1px solid #dddddd;
   margin-bottom: 1rem;
 }
 .product_desc ul.tab_nav li {
   position: relative;
   font-size: 1.5rem;
   margin-right: 1.25rem;
-  color: var(--text-light-gray-color);
+  color: #dddddd;
   line-height: 2;
   cursor: pointer;
 }
 .product_desc ul.tab_nav li.active {
-  color: var(--text-black-color);
+  color: #333333;
 }
 .product_desc ul.tab_nav li.active::before {
   content: '';
@@ -448,7 +302,7 @@ export default {
   bottom: 0;
   display: block;
   width: 100%;
-  border-bottom: 3px solid var(--title-under-color);
+  border-bottom: 3px solid #b28146;
   transform: translateY(50%);
 }
 .product_desc .tab_panel {
@@ -459,6 +313,43 @@ export default {
   display: block;
 }
 
+.title_product {
+  text-align: left;
+  border-bottom: 1px solid #dddddd;
+  position: relative;
+  color: var(--text-black-color);
+  margin-bottom: 2.5rem;
+}
+.title_product::after {
+  content: '';
+  border-bottom: 3px solid #b28146;
+  width: 239px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transform: translateY(50%);
+}
+.title_product h1 {
+  display: inline-block;
+  margin: 0;
+  line-height: 1.5;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.title_product .more {
+  position: absolute;
+  right: 0;
+  bottom: 8px;
+}
+.title_product .more a {
+  color: var(--text-blue-color);
+  font-size: 1rem;
+  text-decoration: none;
+}
+.title_product .more a:hover {
+  opacity: 0.8;
+}
+
 .relation {
   margin-top: 2rem;
 }
@@ -467,10 +358,11 @@ export default {
 }
 .relation .title_product h1 {
   position: relative;
+  font-size: 1.5rem;
 }
 .relation .title_product h1::after {
   content: '';
-  border-bottom: 3px solid var(--title-under-color);
+  border-bottom: 3px solid #b28146;
   width: 100%;
   display: block;
   position: absolute;
@@ -480,5 +372,23 @@ export default {
 }
 .relation .title_product::after {
   display: none;
+}
+
+.prod-list .prod-title {
+  font-size: 18px;
+  color: var(--text-black-color);
+  padding-top: 5px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.prod-list img {
+  width: 100%;
+}
+.prod-list .prod-price {
+  color: #b28146;
+  font-size: 18px;
+  font-weight: 500;
+  padding-bottom: 15px;
 }
 </style>
