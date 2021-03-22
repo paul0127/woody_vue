@@ -1,6 +1,6 @@
 <template>
   <div class="contain">
-    <bread :bread_list="bread_list"></bread>
+    <bread :bread_list="bread_list" :title="title"></bread>
     <div class="service">
       <div class="container">
         <div class="list">
@@ -70,6 +70,10 @@ export default {
         { id: 2, name: '關於我們', url: '#' },
         { id: 3, name: '企業服務', url: '#' },
       ],
+      title:{
+        name:'企業服務',
+        ename:'Service'
+      },
     }
   },
 }

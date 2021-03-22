@@ -1,6 +1,6 @@
 <template>
   <div class="contain">
-    <bread :bread_list="bread_list"></bread>
+    <bread :bread_list="bread_list" :title="title"></bread>
     <div class="news_list">
         <router-link
           class="news_item"
@@ -44,60 +44,20 @@ export default {
   },
   data() {
     return {
-      bread_list: [
-        { id: 1, name: '首頁', url: '/' },
-        { id: 2, name: '關於我們', url: '#' },
-        { id: 3, name: '工藝師介紹', url: '#' },
-      ],
-      news_list: [
-        {
-          id: 1,
-          pc_code: 1,
-          name: ' 過隊有市品知車日輕視臺作本 大常管你修水如,以為臺! ',
-          pic: '/img/news/三角魯班尺03.png',
-          pubdate: '2020-10-10',
-          desc:
-            '過隊有市品知車日輕視臺作本大常管你修水如,以為臺!的經共是力期園原科是生程;',
-        },
-        {
-          id: 2,
-          pc_code: 1,
-          name: ' 過隊有市品知車日輕視臺作本 大常管你修水如,以為臺! ',
-          pic: '/img/news/三角魯班尺03.png',
-          pubdate: '2020-10-10',
-          desc:
-            '過隊有市品知車日輕視臺作本大常管你修水如,以為臺!的經共是力期園原科是生程;',
-        },
-        {
-          id: 3,
-          pc_code: 1,
-          name: ' 過隊有市品知車日輕視臺作本 大常管你修水如,以為臺! ',
-          pic: '/img/news/三角魯班尺03.png',
-          pubdate: '2020-10-10',
-          desc:
-            '過隊有市品知車日輕視臺作本大常管你修水如,以為臺!的經共是力期園原科是生程;',
-        },
-        {
-          id: 4,
-          pc_code: 1,
-          name: ' 過隊有市品知車日輕視臺作本 大常管你修水如,以為臺! ',
-          pic: '/img/news/三角魯班尺03.png',
-          pubdate: '2020-10-10',
-          desc:
-            '過隊有市品知車日輕視臺作本大常管你修水如,以為臺!的經共是力期園原科是生程;',
-        },
-        {
-          id: 5,
-          pc_code: 1,
-          name: ' 過隊有市品知車日輕視臺作本 大常管你修水如,以為臺! ',
-          pic: '/img/news/三角魯班尺03.png',
-          pubdate: '2020-10-10',
-          desc:
-            '過隊有市品知車日輕視臺作本大常管你修水如,以為臺!的經共是力期園原科是生程;',
-        },
-      ],
+      
     }
   },
+  computed:{
+    bread_list(){
+      return this.$store.state.news.bread_list
+    },
+    title(){
+      return this.$store.state.news.title
+    },
+    news_list(){
+      return this.$store.state.news.news_list
+    }
+  }
 }
 </script>
 <style>

@@ -1,6 +1,6 @@
 <template>
   <div class="contain">
-    <bread :bread_list="bread_list"></bread>
+    <bread :bread_list="bread_list" :title="title"></bread>
     <div class="artisan_item left">
       <div class="img">
         <img src="@/assets/img/artisan/李萬財.jpg" />
@@ -130,6 +130,10 @@ export default {
         { id: 2, name: '關於我們', url: '#' },
         { id: 3, name: '工藝師介紹', url: '#' },
       ],
+      title:{
+        name:'工藝師介紹',
+        ename:'Artisan'
+      },
     }
   },
 }

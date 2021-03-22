@@ -8,7 +8,7 @@
         <li>{{ bread_list[bread_list.length - 1].name }}</li>
       </ul>
     </div>
-    <bigTitle v-if="bigTitle_open"></bigTitle>
+    <bigTitle v-if="bigTitle_open" :title="title"></bigTitle>
   </div>
 </template>
 <script>
@@ -20,6 +20,7 @@ export default {
       type: Boolean,
       default: true,
     },
+    title:Object
   },
   components: {
     bigTitle,

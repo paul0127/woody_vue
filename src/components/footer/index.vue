@@ -3,7 +3,9 @@
     <div class="container">
       <div class="footer_content">
         <div class="footer_logo">
-          <router-link :to="{ path: '/' }"><img :src="require('@/assets'+info.footer_logo)"/></router-link>
+          <router-link :to="{ path: '/' }"
+            ><img :src="require('@/assets' + info.footer_logo)"
+          /></router-link>
         </div>
         <div class="footer_link">
           <ul>
@@ -16,22 +18,30 @@
         </div>
         <div class="footer_bottom">
           <div class="contact">
-            <div>聯絡電話：{{info.tel}}</div>
-            <div>營業時間：{{info.open_day}}</div>
+            <div>聯絡電話：{{ info.tel }}</div>
+            <div>營業時間：{{ info.open_day }}</div>
           </div>
           <div class="social">
             <ul>
               <li>
-                <a target="_blank" :href="info.pinkoi_url"><img src="@/assets/img/img-pinkoi-white.png"/></a>
+                <a target="_blank" :href="info.pinkoi_url"
+                  ><img src="@/assets/img/img-pinkoi-white.png"
+                /></a>
               </li>
               <li>
-                <a target="_blank" :href="info.fb_url"><img src="@/assets/img/icon-facebook.svg"/></a>
+                <a target="_blank" :href="info.fb_url"
+                  ><img src="@/assets/img/icon-facebook.svg"
+                /></a>
               </li>
               <li>
-                <a target="_blank" :href="info.ig_url"><img src="@/assets/img/icon-instagram.svg"/></a>
+                <a target="_blank" :href="info.ig_url"
+                  ><img src="@/assets/img/icon-instagram.svg"
+                /></a>
               </li>
               <li>
-                <a target="_blank" :href="info.line_url"><img src="@/assets/img/icon-line.svg"/></a>
+                <a target="_blank" :href="info.line_url"
+                  ><img src="@/assets/img/icon-line.svg"
+                /></a>
               </li>
             </ul>
           </div>
@@ -45,24 +55,15 @@
 <script>
 export default {
   data() {
-    return {
-      info: {
-        footer_logo: '/img/img-logoWhite-footer.png',
-        tel: '03-9605665',
-        open_day: '週一～週日 9:00~18:00',
-        pinkoi_url:'https://www.pinkoi.com/',
-        fb_url:'https://www.facebook.com',
-        ig_url:'https://www.instagram.com/',
-        line_url:'https://line.me/zh-hant/'
-      },
-      footer_list: [
-        { id: 1, name: '關於我們', url: '/Brand' },
-        { id: 2, name: '最新消息', url: '/news' },
-        { id: 3, name: '商品介紹', url: '/product' },
-        { id: 4, name: '服務據點', url: '/location' },
-        { id: 5, name: '工藝師專區', url: '/artisan' },
-      ],
-    }
+    return {}
+  },
+  computed: {
+    info() {
+      return this.$store.state.footer.info
+    },
+    footer_list() {
+      return this.$store.state.footer.footer_list
+    },
   },
 }
 </script>

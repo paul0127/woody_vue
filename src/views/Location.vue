@@ -1,6 +1,6 @@
 <template>
   <div class="contain">
-    <bread :bread_list="bread_list"></bread>
+    <bread :bread_list="bread_list" :title="title"></bread>
     <div class="store">
       <div class="container">
         <div class="location">
@@ -6771,6 +6771,10 @@ export default {
         { id: 1, name: '首頁', url: '/' },
         { id: 2, name: '據點', url: '#' },
       ],
+      title:{
+        name:'銷售據點',
+        ename:'Store'
+      },
       pop_open: 0,
       pop_line: '',
       pop_info: { pic: '/img/location/據點_宜蘭333X190.png', name: '', address: '' },

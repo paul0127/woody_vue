@@ -58,148 +58,16 @@ export default {
   },
   data() {
     return {
-      bigTitle_open: false,
       bread_list: [
         { id: 1, name: '首頁', url: '/' },
         { id: 2, name: '商品介紹', url: '#' },
       ],
-      product_section: [
-        {
-          id: 1,
-          name: '家俱/馨享',
-          product_list: [
-            {
-              id: 1,
-              pc_code: 1,
-              pic: '/img/product/prds_01_【馨享】茶几.png',
-              name: '【馨享】茶几',
-              price: 3999,
-            },
-            {
-              id: 2,
-              pc_code: 1,
-              pic: '/img/product/prds_01-1_【馨享】休閒椅.png',
-              name: '【馨享】休閒椅',
-              price: 3999,
-            },
-            {
-              id: 3,
-              pc_code: 1,
-              pic: '/img/product/prds_01-2_【馨享】玄關桌.png',
-              name: '【馨享】玄關桌',
-              price: 3999,
-            },
-          ],
-        },
-        {
-          id: 2,
-          name: '家俱/日常',
-          product_list: [
-            {
-              id: 1,
-              pc_code: 1,
-              pic: '/img/product/prds-daily-01_2人位沙發.png',
-              name: '【馨享】茶几',
-              price: 3999,
-            },
-            {
-              id: 2,
-              pc_code: 1,
-              pic: '/img/product/prds-daily-02_休閒椅.png',
-              name: '【馨享】休閒椅',
-              price: 3999,
-            },
-            {
-              id: 3,
-              pc_code: 1,
-              pic: '/img/product/prds-daily-03_咖啡桌.png',
-              name: '【馨享】玄關桌',
-              price: 3999,
-            },
-          ],
-        },
-        {
-          id: 3,
-          name: '文創商品/工藝類',
-          product_list: [
-            {
-              id: 1,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-01_藝術品系列.png',
-              name: '【馨享】茶几',
-              price: 3999,
-            },
-            {
-              id: 2,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-02_茶香水.png',
-              name: '【馨享】休閒椅',
-              price: 3999,
-            },
-            {
-              id: 3,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-03_木器公仔.png',
-              name: '【馨享】玄關桌',
-              price: 3999,
-            },
-          ],
-        },
-        {
-          id: 4,
-          name: '文創商品/食器類',
-          product_list: [
-            {
-              id: 1,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-food-01_食盒.png',
-              name: '【馨享】茶几',
-              price: 3999,
-            },
-            {
-              id: 2,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-food-02_沾板.png',
-              name: '【馨享】休閒椅',
-              price: 3999,
-            },
-            {
-              id: 3,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-food-03_木碗.png',
-              name: '【馨享】玄關桌',
-              price: 3999,
-            },
-          ],
-        },
-        {
-          id: 5,
-          name: '文創商品/文具類',
-          product_list: [
-            {
-              id: 1,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-tool-01_豬光寶器禮盒.png',
-              name: '【馨享】茶几',
-              price: 3999,
-            },
-            {
-              id: 2,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-tool-02_豬事順曆桌曆.png',
-              name: '【馨享】休閒椅',
-              price: 3999,
-            },
-            {
-              id: 3,
-              pc_code: 1,
-              pic: '/img/product/prds-creative-tool-03_鼎曆筆筒.png',
-              name: '【馨享】玄關桌',
-              price: 3999,
-            },
-          ],
-        },
-      ],
+      bigTitle_open: false,
+    }
+  },
+  computed: {
+    product_section(){
+      return this.$store.state.product.product_section
     }
   },
 }
