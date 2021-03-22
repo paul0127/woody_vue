@@ -88,7 +88,7 @@
                   <a href="#">
                     <img
                       class="prod-img img-responsive"
-                      src="@/assets/img/product/prds-creative-tool-12_【鎖護(守護)】鑰匙圈.png"
+                      src="@/assets/img/product/鑰匙圈.png"
                     />
                   </a>
                   <div class="prod-title">【鎖護(守護)】鑰匙圏</div>
@@ -98,7 +98,7 @@
                   <a href="#">
                     <img
                       class="prod-img img-responsive"
-                      src="@/assets/img/product/prds-creative-tool-03_【鼎曆】筆筒.png"
+                      src="@/assets/img/product/筆筒.png"
                     />
                   </a>
                   <div class="prod-title">【鼎暦】筆筒</div>

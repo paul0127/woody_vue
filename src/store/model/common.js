@@ -21,7 +21,7 @@ export default {
       { id: 3, name: '商品名稱3', price: 3330 },
       { id: 4, name: '商品名稱4', price: 4350 },
     ],
-    info: {
+    company: {
       footer_logo: '/img/img-logoWhite-footer.png',
       tel: '03-9605665',
       open_day: '週一～週日 9:00~18:00',

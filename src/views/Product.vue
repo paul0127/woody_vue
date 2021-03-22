@@ -32,7 +32,7 @@
                 >
                   <img
                     class="prod-img img-responsive"
-                    :src="require('@/assets' + i.pic)"
+                    :src="require('@/assets' + i.pic_list[0].pic)"
                   />
                 </router-link>
                 <div class="prod-title">{{ i.name }}</div>
@@ -65,9 +65,13 @@ export default {
       bigTitle_open: false,
     }
   },
+  mounted(){
+    this.$store.dispatch('get_products')
+    this.$store.dispatch('get_productClass')
+  },
   computed: {
     product_section(){
-      return this.$store.state.product.product_section
+      return this.$store.getters.product_section
     }
   },
 }

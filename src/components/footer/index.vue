@@ -59,7 +59,7 @@ export default {
   },
   computed: {
     info() {
-      return this.$store.state.common.info
+      return this.$store.state.common.company
     },
     footer_list() {
       return this.$store.state.common.footer_list

@@ -1,5 +1,9 @@
+import axios from 'axios'
+
 export default {
   state: {
+    product_list: [],
+    product_class: [],
     product_section: [
       {
         id: 1,
@@ -138,6 +142,35 @@ export default {
       },
     ],
   },
-  mutations: {},
-  actions: {},
+  getters: {
+    product_section: (state) => {
+      let list = []
+      state.product_class.forEach((item, index) => {
+        list[index] = { id: index, name: item.name, product_list: [] }
+        list[index]['product_list'] = state.product_list.filter(pro=>pro.pc_code==item.id)
+      })
+
+      return list
+    },
+  },
+  mutations: {
+    setProduct(state, product) {
+      state.product_list = product
+    },
+    setProductClass(state, productClass) {
+      state.product_class = productClass
+    },
+  },
+  actions: {
+    get_products({ commit }) {
+      axios.get('/data/products.json').then((response) => {
+        commit('setProduct', response.data)
+      })
+    },
+    get_productClass({ commit }) {
+      axios.get('/data/product_class.json').then((response) => {
+        commit('setProductClass', response.data)
+      })
+    },
+  },
 }
