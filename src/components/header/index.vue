@@ -28,10 +28,10 @@ export default {
   },
   computed: {
     header_list() {
-      return this.$store.state.header.header_list
+      return this.$store.state.common.header_list
     },
     cart_list() {
-      return this.$store.state.header.cart_list
+      return this.$store.state.common.cart_list
     },
   },
 }

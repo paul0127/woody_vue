@@ -1,4 +1,4 @@
-let product =[
+[
   {
     id: 1,
     pc_code: 1,
@@ -18,7 +18,7 @@ let product =[
     name: '【馨享】休閒椅',
     price: 3999,
     pic_list: [
-      { pic: '/img/product/prds_01_【馨享】茶几.png' },
+      { pic: '/img/product/prds_01-1_【馨享】休閒椅.1c520e4b.png' },
       { pic: '/img/product/prds_01_【馨享】茶几.png' },
     ],
     desc:'產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',
@@ -31,7 +31,7 @@ let product =[
     name: '【馨享】玄關桌',
     price: 3999,
     pic_list: [
-      { pic: '/img/product/prds_01_【馨享】茶几.png' },
+      { pic: '/img/product/prds_01-2_【馨享】玄關桌.e0134a40.png' },
       { pic: '/img/product/prds_01_【馨享】茶几.png' },
     ],
     desc:'產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',
@@ -44,7 +44,7 @@ let product =[
     name: '2人位沙發',
     price: 3999,
     pic_list: [
-      { pic: '/img/product/prds_01_【馨享】茶几.png' },
+      { pic: '/img/product/prds-daily-01_2人位沙發.8f62e255.png' },
       { pic: '/img/product/prds_01_【馨享】茶几.png' },
     ],
     desc:'產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',
@@ -57,7 +57,7 @@ let product =[
     name: '休閒椅',
     price: 3999,
     pic_list: [
-      { pic: '/img/product/prds_01_【馨享】茶几.png' },
+      { pic: '/img/product/prds-daily-02_休閒椅.9ec53fae.png' },
       { pic: '/img/product/prds_01_【馨享】茶几.png' },
     ],
     desc:'產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',
@@ -70,7 +70,7 @@ let product =[
     name: '咖啡桌',
     price: 3999,
     pic_list: [
-      { pic: '/img/product/prds_01_【馨享】茶几.png' },
+      { pic: '/img/product/prds-daily-03_咖啡桌.5515fecc.png' },
       { pic: '/img/product/prds_01_【馨享】茶几.png' },
     ],
     desc:'產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',
@@ -83,7 +83,7 @@ let product =[
     name: '藝術品',
     price: 3999,
     pic_list: [
-      { pic: '/img/product/prds_01_【馨享】茶几.png' },
+      { pic: '/img/product/prds-creative-01_藝術品系列.911df993.png' },
       { pic: '/img/product/prds_01_【馨享】茶几.png' },
     ],
     desc:'產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',
@@ -96,7 +96,7 @@ let product =[
     name: '茶香水',
     price: 3999,
     pic_list: [
-      { pic: '/img/product/prds_01_【馨享】茶几.png' },
+      { pic: '/img/product/prds-creative-02_茶香水.d1512de7.png' },
       { pic: '/img/product/prds_01_【馨享】茶几.png' },
     ],
     desc:'產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',
@@ -109,7 +109,7 @@ let product =[
     name: '木器公仔',
     price: 3999,
     pic_list: [
-      { pic: '/img/product/prds_01_【馨享】茶几.png' },
+      { pic: '/img/product/prds-creative-03_木器公仔.fceb445a.png' },
       { pic: '/img/product/prds_01_【馨享】茶几.png' },
     ],
     desc:'產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',
@@ -122,7 +122,7 @@ let product =[
     name: '食盒',
     price: 3999,
     pic_list: [
-      { pic: '/img/product/prds_01_【馨享】茶几.png' },
+      { pic: '/img/product/prds-creative-food-01_食盒.0446cafb.png' },
       { pic: '/img/product/prds_01_【馨享】茶几.png' },
     ],
     desc:'產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',
@@ -135,7 +135,7 @@ let product =[
     name: '沾板',
     price: 3999,
     pic_list: [
-      { pic: '/img/product/prds_01_【馨享】茶几.png' },
+      { pic: '/img/product/prds-creative-food-02_沾板.d0ae86e0.png' },
       { pic: '/img/product/prds_01_【馨享】茶几.png' },
     ],
     desc:'產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',
@@ -148,7 +148,7 @@ let product =[
     name: '木碗',
     price: 3999,
     pic_list: [
-      { pic: '/img/product/prds_01_【馨享】茶几.png' },
+      { pic: '/img/product/prds-creative-food-03_木碗.54bbd064.png' },
       { pic: '/img/product/prds_01_【馨享】茶几.png' },
     ],
     desc:'產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',
@@ -161,7 +161,7 @@ let product =[
     name: '豬光寶器禮盒',
     price: 3999,
     pic_list: [
-      { pic: '/img/product/prds_01_【馨享】茶几.png' },
+      { pic: '/img/product/prds-creative-tool-01_豬光寶器禮盒.dc81e7dd.png' },
       { pic: '/img/product/prds_01_【馨享】茶几.png' },
     ],
     desc:'產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',
@@ -174,7 +174,7 @@ let product =[
     name: '豬事順曆桌曆',
     price: 3999,
     pic_list: [
-      { pic: '/img/product/prds_01_【馨享】茶几.png' },
+      { pic: '/img/product/prds-creative-tool-02_豬事順曆桌曆.7758c653.png' },
       { pic: '/img/product/prds_01_【馨享】茶几.png' },
     ],
     desc:'產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',
@@ -187,7 +187,7 @@ let product =[
     name: '鼎曆筆筒',
     price: 3999,
     pic_list: [
-      { pic: '/img/product/prds_01_【馨享】茶几.png' },
+      { pic: '/img/product/prds-creative-tool-03_鼎曆筆筒.e16a777d.png' },
       { pic: '/img/product/prds_01_【馨享】茶几.png' },
     ],
     desc:'產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',

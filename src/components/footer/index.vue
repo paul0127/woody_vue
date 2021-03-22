@@ -59,10 +59,10 @@ export default {
   },
   computed: {
     info() {
-      return this.$store.state.footer.info
+      return this.$store.state.common.info
     },
     footer_list() {
-      return this.$store.state.footer.footer_list
+      return this.$store.state.common.footer_list
     },
   },
 }
