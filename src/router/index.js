@@ -9,7 +9,7 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
-    meta: {title: '首頁'}
+    meta: {title: '青木工坊'}
   },
   {
     path: '/brand',
@@ -42,13 +42,13 @@ const routes = [
     meta: {title: '最新消息'}
   },
   {
-    path: '/news/class_:id',
+    path: '/news/class_:classId',
     name: 'News',
     component: () => import(/* webpackChunkName: "News" */ '../views/News.vue'),
     meta: {title: '最新消息'}
   },
   {
-    path: '/news/class_:id/:id',
+    path: '/news/class_:classId/:id',
     name: 'NewsInfo',
     component: () => import(/* webpackChunkName: "NewsInfo" */ '../views/NewsInfo.vue'),
     meta: {title: '最新消息 內頁'}
@@ -60,13 +60,13 @@ const routes = [
     meta: {title: '商品列表'}
   },
   {
-    path: '/product/class_:id',
+    path: '/product/class_:classId',
     name: 'ProductSection',
     component: () => import(/* webpackChunkName: "ProductSection" */ '../views/ProductSection.vue'),
     meta: {title: '商品列表'}
   },
   {
-    path: '/product/class_:id/:id',
+    path: '/product/class_:classId/:id',
     name: 'ProductInfo',
     component: () => import(/* webpackChunkName: "ProductInfo" */ '../views/ProductInfo.vue'),
     meta: {title: '商品內頁'}

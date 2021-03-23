@@ -3,19 +3,20 @@
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li class="page-item">
-          <a class="page-link" href="#">&lt;&lt;</a>
+          <a class="page-link" @click="pager_arrow(-1)">&lt;&lt;</a>
         </li>
-        <li class="page-item active">
-          <a class="page-link" href="#">1</a>
+        <li
+          class="page-item"
+          :class="{ active: now_page == n }"
+          v-for="n in pager_total"
+          :key="n"
+        >
+          <router-link class="page-link" :to="{ query: { p: n } }">{{
+            n
+          }}</router-link>
         </li>
         <li class="page-item">
-          <a class="page-link" href="#">2</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">3</a>
-        </li>
-        <li class="page-item">
-          <a class="page-link" href="#">&gt;&gt;</a>
+          <a class="page-link" @click="pager_arrow(1)">&gt;&gt;</a>
         </li>
       </ul>
     </nav>
@@ -24,10 +25,16 @@
 <script>
 export default {
   props: {
-    bread_list: Array,
+    pager_total: Number,
+    now_page: Number,
   },
-  computed: {
-    
+  computed: {},
+  methods: {
+    pager_arrow(c) {
+      let query = this.$route.query.p ? Number(this.$route.query.p) : 1
+      if ((c < 0 && query > 1) || (c > 0 && query < this.pager_total))
+        this.$router.replace({ query: { p: query + c } })
+    },
   },
 }
 </script>
@@ -40,6 +47,7 @@ export default {
   color: #b28146;
   border-color: #b28146;
   outline: none;
+  cursor: pointer;
 }
 .pager_nav .pagination > li.active > a {
   color: #fff;

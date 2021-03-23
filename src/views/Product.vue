@@ -65,14 +65,14 @@ export default {
       bigTitle_open: false,
     }
   },
-  mounted(){
+  mounted() {
     this.$store.dispatch('get_products')
     this.$store.dispatch('get_productClass')
   },
   computed: {
-    product_section(){
+    product_section() {
       return this.$store.getters.product_section
-    }
+    },
   },
 }
 </script>

@@ -15,34 +15,13 @@
 <script>
 export default {
   props: {},
-  computed: {},
   data() {
-    return {
-      side_list: [
-        {
-          id: 1,
-          name: '家俱',
-          sub: [
-            { id: 1, name: '日常' },
-            { id: 2, name: '馨享' },
-          ],
-        },
-        {
-          id: 2,
-          name: '文創商品',
-          sub: [
-            { id: 3, name: '工藝類' },
-            { id: 4, name: '食器類' },
-            { id: 5, name: '文具類' },
-          ],
-        },
-        {
-          id: 3,
-          name: '個性化服務',
-          sub: [{ id: 6, name: '個性化服務' }],
-        },
-      ],
-    }
+    return {}
+  },
+  computed: {
+    side_list() {
+      return this.$store.getters.side_list
+    },
   },
 }
 </script>

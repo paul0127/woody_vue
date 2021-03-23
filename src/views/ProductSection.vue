@@ -18,7 +18,7 @@
           </div>
           <div class="product_section">
             <div class="title_product">
-              <h1>{{ product_info.name }}</h1>
+              <h1>{{b_title.name}}/{{ product_class.name }}</h1>
             </div>
             <div class="row prod-list">
               <div
@@ -31,7 +31,7 @@
                 >
                   <img
                     class="prod-img img-responsive"
-                    :src="require('@/assets' + i.pic)"
+                    :src="require('@/assets' + i.pic_list[0].pic)"
                   />
                 </router-link>
                 <div class="prod-title">{{ i.name }}</div>
@@ -39,7 +39,11 @@
               </div>
             </div>
           </div>
-          <pager></pager>
+          <pager
+            :pager_total="pager_total"
+            :now_page="now_page"
+            v-if="pager_total > 0"
+          ></pager>
         </div>
       </div>
     </div>
@@ -68,93 +72,34 @@ export default {
         { id: 4, name: '文具類', url: '#' },
       ],
       product_info: { id: 1, name: '家俱/馨享' },
-      product_list: [
-        {
-          id: 1,
-          pc_code: 1,
-          pic: '/img/product/prds-creative-tool-01_【豬光寶器】禮盒.png',
-          name: '【豬光寶器】禮盒',
-          price: 3999,
-        },
-        {
-          id: 2,
-          pc_code: 1,
-          pic: '/img/product/prds-creative-tool-02_【豬事順曆】桌曆.png',
-          name: '【豬事順暦】桌暦',
-          price: 3999,
-        },
-        {
-          id: 3,
-          pc_code: 1,
-          pic: '/img/product/prds-creative-tool-03_【鼎曆】筆筒.png',
-          name: '【鼎暦】筆筒',
-          price: 3999,
-        },
-        {
-          id: 4,
-          pc_code: 1,
-          pic: '/img/product/prds-creative-tool-04_【稱心】筆.png',
-          name: '【稱心】筆',
-          price: 3999,
-        },
-        {
-          id: 5,
-          pc_code: 1,
-          pic: '/img/product/prds-creative-tool-05_【稱心如意】禮盒.png',
-          name: '【稱心如意】禮盒椅',
-          price: 3999,
-        },
-        {
-          id: 6,
-          pc_code: 1,
-          pic: '/img/product/prds-creative-tool-06_【晶澄】玻璃筆.png',
-          name: '【晶澄】玻璃筆',
-          price: 3999,
-        },
-        {
-          id: 7,
-          pc_code: 1,
-          pic: '/img/product/prds-creative-tool-07_【星運高照】星座.png',
-          name: '【星運高照】星座',
-          price: 3999,
-        },
-        {
-          id: 8,
-          pc_code: 1,
-          pic: '/img/product/prds-creative-tool-08_【稱心】鋼筆.png',
-          name: '【稱心】鋼筆',
-          price: 3999,
-        },
-        {
-          id: 9,
-          pc_code: 1,
-          pic: '/img/product/prds-creative-tool-09_【木生活】燈.png',
-          name: '【木生活】燈',
-          price: 3999,
-        },
-        {
-          id: 10,
-          pc_code: 1,
-          pic: '/img/product/木質筆.png',
-          name: '【遊思】木質筆',
-          price: 3999,
-        },
-        {
-          id: 11,
-          pc_code: 1,
-          pic: '/img/product/prds-creative-tool-11_【窗語】隨身碟.png',
-          name: '【窗語】隨身碟',
-          price: 3999,
-        },
-        {
-          id: 12,
-          pc_code: 1,
-          pic: '/img/product/prds-creative-tool-12_【鎖護(守護)】鑰匙圈.png',
-          name: '【鎖護(守護)】鑰匙圈',
-          price: 3999,
-        },
-      ],
     }
+  },
+  mounted() {
+    this.$store.dispatch('get_products')
+    this.$store.dispatch('get_productClass')
+  },
+  computed: {
+    b_title() {
+      let classID = Number(this.$route.params.classId)
+      let side_list = this.$store.state.product.side_list
+      return side_list.find((item) => item.sub.includes(classID))
+    },
+    product_class() {
+      let classID = this.$route.params.classId
+      return this.$store.getters.pro_class(classID)
+    },
+    product_list() {
+      let classID = this.$route.params.classId
+      let query = this.$route.query.p ? this.$route.query.p : 1
+      return this.$store.getters.pro_list(classID, query)
+    },
+    pager_total() {
+      let classID = this.$route.params.classId
+      return this.$store.getters.pro_pager(classID)
+    },
+    now_page() {
+      return this.$route.query.p ? Number(this.$route.query.p) : 1
+    },
   },
 }
 </script>

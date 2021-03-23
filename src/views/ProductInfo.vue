@@ -11,12 +11,15 @@
           <div class="product_info">
             <div class="product_top">
               <div class="product_pic">
-                <img class="main_pic" :src="require('@/assets' + main_pic)" />
+                <img
+                  class="main_pic"
+                  :src="main_pic ? require('@/assets' + main_pic) : require('@/assets' + product_info.pic_list[0].pic)"
+                />
                 <ul class="small_pic">
                   <!--data-img 需要放顯示的大圖-->
                   <li
                     :class="{ active: index == choose_pic }"
-                    v-for="(pic, index) in pic_list"
+                    v-for="(pic, index) in product_info.pic_list"
                     :key="pic.id"
                     :style="{
                       backgroundImage:
@@ -51,23 +54,21 @@
             </div>
             <div class="product_desc">
               <ul class="tab_nav">
-                <li :class="{active:now_tab==0}" @click="tabs_check(0)">商品介紹</li>
-                <li :class="{active:now_tab==1}" @click="tabs_check(1)">商品規格</li>
+                <li :class="{ active: now_tab == 0 }" @click="tabs_check(0)">
+                  商品介紹
+                </li>
+                <li :class="{ active: now_tab == 1 }" @click="tabs_check(1)">
+                  商品規格
+                </li>
               </ul>
-              <div class="tab_panel" :class="{active:now_tab==0}">
-                <div class="editor">
-                  <img src="@/assets/img/product/隨身碟.png" />
-                  <p>
-                    源自東方的窗花民間藝術圖騰,結合了現代工藝的水晶玻璃雷雕與木料,<br />
-                    讓傳統藝術以嶄新的樣貌呈現在產品之上,水晶玻璃的透視感,仿佛透過<br />
-                    窗花向外觀看,窗花的美好如同隨身碟承載的記憶,也象征青木工坊設計<br />
-                    理念,傳統與現代的兼容並蓄,新東方設計風格
-                  </p>
-                </div>
+              <div class="tab_panel" :class="{ active: now_tab == 0 }">
+                <div class="editor" v-html="product_info.content"></div>
               </div>
-              <div class="tab_panel" :class="{active:now_tab==1}">
-                <div class="editor">品名:【窗語】隨身碟</div>
-              </div>
+              <div
+                class="tab_panel"
+                :class="{ active: now_tab == 1 }"
+                v-html="product_info.format"
+              ></div>
             </div>
             <div class="relation">
               <div class="title_product">
@@ -126,7 +127,7 @@ export default {
   data() {
     return {
       bigTitle_open: false,
-      main_pic: '',
+      main_pic:'',
       choose_pic: 0,
       now_tab: 0,
       bread_list: [
@@ -136,31 +137,28 @@ export default {
         { id: 4, name: '文具類', url: '#' },
         { id: 5, name: '【窗語】隨身碟', url: '#' },
       ],
-      product_info: {
-        name: '【窗語】隨身碟',
-        desc:
-          '產品編瑪:1234567890 <br> 材質:木 <br> 規格大小:尺寸:64x 18x10mm,<br> 格紋款:水品玻璃,核桃木,16G內存; <br> 窗花款:水品玻璃,炭化<br>',
-        price: 900,
-      },
-      pic_list: [
-        { id: 1, pic: '/img/product/隨身碟.png' },
-        { id: 2, pic: '/img/product/木質筆.png' },
-        { id: 3, pic: '/img/product/隨身碟.png' },
-        { id: 4, pic: '/img/product/木質筆.png' },
-      ],
     }
   },
-  created() {
-    this.main_pic = this.pic_list[0].pic
+  mounted() {
+    this.$store.dispatch('get_products')
+    this.$store.dispatch('get_productClass')
+  },
+  computed: {
+    product_info() {
+      let id = this.$route.params.id
+      let info = this.$store.getters.pro_info(id)
+
+      return info
+    },
   },
   methods: {
     choosePic(index) {
       this.choose_pic = index
-      this.main_pic = this.pic_list[index].pic
+      this.main_pic = this.product_info.pic_list[index].pic
     },
-    tabs_check(c){
+    tabs_check(c) {
       this.now_tab = c
-    }
+    },
   },
 }
 </script>

@@ -3,7 +3,7 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/woody_vue/' : './',
+  publicPath: process.env.NODE_ENV === 'production' ? '/woody_vue/' : '/woody_vue',
   chainWebpack: (config) => {
     config.resolve.alias
       .set('@', resolve('src'))

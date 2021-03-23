@@ -5,7 +5,6 @@
         <router-link
           class="news_item"
           :to="{ path: '/news/class_' + item.pc_code + '/' + item.id }"
-
           v-for="item in news_list" :key="item.id"
         >
           <div class="image">
@@ -29,7 +28,7 @@
           </div>
         </router-link>
     </div>
-    <pager></pager>
+    <pager :pager_total="pager_total" :now_page="now_page"></pager>
   </div>
 </template>
 <script>
@@ -37,7 +36,7 @@ import bread from '@/components/bread/bread.vue'
 import pager from '@/components/pager/pager.vue'
 
 export default {
-  name: 'Artisan',
+  name: 'News',
   components: {
     bread,
     pager,
@@ -47,6 +46,9 @@ export default {
       
     }
   },
+  mounted(){
+    this.$store.dispatch('get_news')
+  },
   computed:{
     bread_list(){
       return this.$store.state.news.bread_list
@@ -55,7 +57,14 @@ export default {
       return this.$store.state.news.title
     },
     news_list(){
-      return this.$store.state.news.news_list
+      let query = this.$route.query.p ? this.$route.query.p : 1
+      return this.$store.getters.news_list(query)
+    },
+    pager_total(){
+      return this.$store.getters.pager
+    },
+    now_page(){
+      return this.$route.query.p ? Number(this.$route.query.p) : 1
     }
   }
 }

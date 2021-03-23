@@ -37,6 +37,7 @@ export default {
       { id: 4, name: '服務據點', url: '/location' },
       { id: 5, name: '工藝師專區', url: '/artisan' },
     ],
+    cart:[]
   },
   mutations: {},
   actions: {},
