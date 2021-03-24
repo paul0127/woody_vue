@@ -1,12 +1,9 @@
 <template>
   <div>
     <sliderBlack :banner_list="banner_list"></sliderBlack>
-    <newsBlock :news_info="news_info" :news_list="news_list"></newsBlock>
-    <productBlock
-      :product_info="product_info"
-      :product_list="product_list"
-    ></productBlock>
-    <videoBlock :video_info="video_info" :video_list="video_list"></videoBlock>
+    <newsBlock :news_info="news_info"></newsBlock>
+    <productBlock :product_info="product_info"></productBlock>
+    <videoBlock :video_info="video_info"></videoBlock>
     <artisanBlock></artisanBlock>
   </div>
 </template>
@@ -37,20 +34,11 @@ export default {
     news_info() {
       return this.$store.state.home.news_info
     },
-    news_list() {
-      return this.$store.state.home.news_list
-    },
     product_info() {
       return this.$store.state.home.product_info
     },
-    product_list() {
-      return this.$store.state.home.product_list
-    },
     video_info() {
       return this.$store.state.home.video_info
-    },
-    video_list() {
-      return this.$store.state.home.video_list
     },
   },
 }

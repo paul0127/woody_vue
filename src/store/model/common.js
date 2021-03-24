@@ -15,12 +15,6 @@ export default {
       { id: 3, name: '商品介紹', url: '/product', sub: [] },
       { id: 4, name: '據點', url: '/location', sub: [] },
     ],
-    cart_list: [
-      { id: 1, name: '商品名稱1', price: 1230 },
-      { id: 2, name: '商品名稱2', price: 2320 },
-      { id: 3, name: '商品名稱3', price: 3330 },
-      { id: 4, name: '商品名稱4', price: 4350 },
-    ],
     company: {
       footer_logo: '/img/img-logoWhite-footer.png',
       tel: '03-9605665',
@@ -37,34 +31,55 @@ export default {
       { id: 4, name: '服務據點', url: '/location' },
       { id: 5, name: '工藝師專區', url: '/artisan' },
     ],
-    product_list: [],
     cart: [],
+    dist: [],
+    info: {},
   },
   mutations: {
+    setdist(state, dist) {
+      state.dist = dist
+    },
     setcart(state, cart) {
       state.cart = cart
     },
+    setinfo(state, info) {
+      state.info = info
+    },
   },
   actions: {
+    get_dist({ commit }) {
+      let dist = require('@/assets/data/taiwan_districts.json')
+      commit('setdist', dist)
+    },
+    get_info({ commit }) {
+      let arr = localStorage.getItem('info')
+        ? JSON.parse(localStorage.getItem('info'))
+        : {}
+      commit('setinfo', arr)
+    },
     get_cart({ commit }) {
       let cart = localStorage.getItem('cart')
         ? JSON.parse(localStorage.getItem('cart'))
         : []
       commit('setcart', cart)
     },
-    select_qty({ commit },{id,d}){
+    select_qty({ commit }, { id, d }) {
       let cart = JSON.parse(localStorage.getItem('cart'))
       let item = cart.find((i) => i.id == id)
       if (d > 0 || item.qty > 1) item.qty = item.qty + d
-      localStorage.setItem('cart',JSON.stringify(cart))
-      commit('setcart',cart)
+      localStorage.setItem('cart', JSON.stringify(cart))
+      commit('setcart', cart)
     },
-    pro_delete({ commit },id){
+    pro_delete({ commit }, id) {
       let cart = JSON.parse(localStorage.getItem('cart'))
       let index = cart.findIndex((i) => i.id == id)
-      cart.splice(index,1)
-      localStorage.setItem('cart',JSON.stringify(cart))
-      commit('setcart',cart)
-    }
+      cart.splice(index, 1)
+      localStorage.setItem('cart', JSON.stringify(cart))
+      commit('setcart', cart)
+    },
+    store_info({ commit }, arr) {
+      localStorage.setItem('info', JSON.stringify(arr))
+      commit('setinfo', arr)
+    },
   },
 }

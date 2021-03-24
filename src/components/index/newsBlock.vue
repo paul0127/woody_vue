@@ -14,7 +14,7 @@
       :dots="false"
       :loop="true"
     >
-        <div class="item" v-for="item in news_list" :key="item.id">
+        <div class="item" v-for="item in news_info.list" :key="item.id">
           <h2>{{item.name}}</h2>
           <p>{{item.desc}}</p>
           <div class="place">{{item.place}}</div>
@@ -31,7 +31,6 @@ import carousel from 'vue-owl-carousel'
 export default {
   props:{
     news_info:Object,
-    news_list:Array
   },
   components: { carousel },
   data(){

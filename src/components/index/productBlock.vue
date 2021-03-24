@@ -10,7 +10,7 @@
       <div class="list row">
         <div
           class="col-md-3 col-sm-6 col-xs-6"
-          v-for="item in product_list"
+          v-for="item in product_info.list"
           :key="item.id"
         >
           <router-link class="item" :to="{ path: '/product/class_'+item.pc_code+'/'+item.id }">
@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  props: { product_info: Object, product_list: Array },
+  props: { product_info: Object },
   data() {
     return {}
   },
