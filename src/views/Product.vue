@@ -58,10 +58,6 @@ export default {
   },
   data() {
     return {
-      bread_list: [
-        { id: 1, name: '首頁', url: '/' },
-        { id: 2, name: '商品介紹', url: '#' },
-      ],
       bigTitle_open: false,
     }
   },
@@ -70,6 +66,13 @@ export default {
     this.$store.dispatch('get_productClass')
   },
   computed: {
+    bread_list() {
+      let bread = [
+        { id: 1, name: '首頁', url: '/' },
+        { id: 2, name: '商品介紹', url: '#' },
+      ]
+      return bread
+    },
     product_section() {
       return this.$store.getters.product_section
     },

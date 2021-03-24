@@ -28,10 +28,10 @@
       </div>
       <div class="form_box">
         <div class="order_title">
-          <input type="radio" id="radio" /><label for="radio">貨到付款</label>
+          <input type="radio" id="radio_1" v-model="payment" value="貨到付款"/><label for="radio_1">貨到付款</label>
         </div>
         <div class="order_title">
-          <input type="radio" id="radio" /><label for="radio">信用卡付款</label>
+          <input type="radio" id="radio_2" v-model="payment" value="信用卡付款"/><label for="radio_2">信用卡付款</label>
         </div>
       </div>
       <div class="cart_bottom">
@@ -55,70 +55,18 @@ export default {
         { id: 2, name: '配送資訊', url: '#' },
       ],
       bigTitle_open: false,
-      name:'',
-      phone:'',
-      email:'',
-      county: null,
-      dist: null,
-      addr:'',
-      memo:''
+      payment: '',
     }
   },
-  mounted() {
-    this.$store.dispatch('get_dist')
-    this.$store.dispatch('get_info')
-
-    let info = this.$store.state.common.info
-
-    this.name = info.name ? info.name : ''
-    this.phone = info.phone ? info.phone : ''
-    this.email = info.email ? info.email : ''
-    this.county = info.county ? info.county : null
-    this.dist = info.dist ? info.dist : null
-    this.addr = info.addr ? info.addr : ''
-    this.memo = info.memo ? info.memo : ''
-  },
-  computed: {
-    county_dist() {
-      return this.$store.state.common.dist
-    },
-    county_list() {
-      let list = []
-      this.county_dist.forEach((item, index) => {
-        list[index] = item.name
-      })
-      return list
-    },
-    dist_list() {
-      let list = []
-      let county = this.county
-      if (county) {
-        let dist = this.county_dist.find((item) => item.name == county)
-        dist.districts.forEach((item, index) => {
-          list[index] = item.name
-        })
-      }
-      return list
-    },
-  },
+  mounted() {},
+  computed: {},
   methods: {
-    countyChange(){
-      this.dist = null
-    },
     next(){
-      let arr ={
-        name:this.name,
-        phone:this.phone,
-        email:this.email,
-        county:this.county,
-        addr:this.addr,
-        dist:this.dist,
-        memo:this.memo
+      if(!this.payment){
+        alert('請選擇付款方式!')
+        return
       }
-
-      this.$store.dispatch('store_info',arr)
-
-      this.$router.push('/payment')
+      this.$router.push('/finish')
     }
   },
 }

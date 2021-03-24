@@ -42,13 +42,7 @@ const routes = [
     meta: {title: '最新消息'}
   },
   {
-    path: '/news/class_:classId',
-    name: 'News',
-    component: () => import(/* webpackChunkName: "News" */ '../views/News.vue'),
-    meta: {title: '最新消息'}
-  },
-  {
-    path: '/news/class_:classId/:id',
+    path: '/news/:id',
     name: 'NewsInfo',
     component: () => import(/* webpackChunkName: "NewsInfo" */ '../views/NewsInfo.vue'),
     meta: {title: '最新消息 內頁'}
@@ -87,7 +81,13 @@ const routes = [
     path: '/payment',
     name: 'Payment',
     component: () => import(/* webpackChunkName: "Login" */ '../views/Payment.vue'),
-    meta: {title: '購物資訊'}
+    meta: {title: '付款資訊'}
+  },
+  {
+    path: '/finish',
+    name: 'Finish',
+    component: () => import(/* webpackChunkName: "Login" */ '../views/Finish.vue'),
+    meta: {title: '完成訂購'}
   },
 ]
 

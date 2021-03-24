@@ -28,11 +28,6 @@ export default {
   },
   data() {
     return {
-      bread_list: [
-        { id: 1, name: '首頁', url: '/' },
-        { id: 2, name: '最新消息', url: '#' },
-        { id: 3, name: '該最新消息内容頁', url: '#' },
-      ],
       bigTitle_open: false,
     }
   },
@@ -40,6 +35,15 @@ export default {
     this.$store.dispatch('get_news')
   },
   computed: {
+    bread_list() {
+      let bread = [{ id: 1, name: '首頁', url: '/' }]
+      bread.push({id:2,name:this.title.name,url:'/news'})
+      bread.push({id:3,name:this.newsInfo.name,url:'#'})
+      return bread
+    },
+    title() {
+      return this.$store.state.news.title
+    },
     newsInfo() {
       let id = this.$route.params.id
       return this.$store.getters.news_info(id)

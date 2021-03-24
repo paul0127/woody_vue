@@ -1,9 +1,5 @@
 export default {
   state: {
-    bread_list: [
-      { id: 1, name: '首頁', url: '/' },
-      { id: 2, name: '最新消息', url: '#' },
-    ],
     title: {
       name: '最新消息',
       ename: 'News',

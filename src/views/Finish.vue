@@ -4,7 +4,7 @@
     <div class="container">
       <div class="stepwizard">
         <div class="stepwizard-row">
-          <div class="stepwizard-step active">
+          <div class="stepwizard-step">
             <a class="btn btn-default btn-circle">1</a>
             <p>購物清單</p>
           </div>
@@ -16,7 +16,7 @@
             <a class="btn btn-default btn-circle">3</a>
             <p>付款資訊</p>
           </div>
-          <div class="stepwizard-step">
+          <div class="stepwizard-step active">
             <a class="btn btn-default btn-circle">4</a>
             <p>完成訂單</p>
           </div>
@@ -35,7 +35,6 @@
             <div class="th price">單價</div>
             <div class="th qty">數量</div>
             <div class="th p_total">小計</div>
-            <div class="th operate"></div>
           </div>
         </div>
 
@@ -49,32 +48,13 @@
               />
             </div>
             <div class="td">
-              <router-link
-                :to="{ path: '/product/class_' + item.pc_code + '/' + item.id }"
-                >{{ item.name }}</router-link
-              >
+              <a target="_blank" href="#">{{ item.name }}</a>
             </div>
             <div class="td price">${{ item.priceText }}</div>
             <div class="td qty">
-              <div class="qty_input">
-                <button type="button" @click="select_qty(item.id, -1)">
-                  -
-                </button>
-                <input
-                  type="number"
-                  placeholder="數量"
-                  readonly
-                  v-model="item.qty"
-                />
-                <button type="button" @click="select_qty(item.id, 1)">
-                  +
-                </button>
-              </div>
+              {{item.qty}}
             </div>
             <div class="td p_total">${{ item.p_totalText }}</div>
-            <div class="td operate">
-              <a class="operate_btn" @click="pro_delete(item.id)">移除</a>
-            </div>
           </div>
         </div>
 
@@ -86,7 +66,6 @@
             <div class="td price"></div>
             <div class="td qty">價格小計</div>
             <div class="td p_total">${{ m_total.text }}</div>
-            <div class="td operate"></div>
           </div>
           <div class="tr">
             <div class="td img"></div>
@@ -94,7 +73,6 @@
             <div class="td price"></div>
             <div class="td qty">運費(金額大於{{ turnout }}免運費)</div>
             <div class="td p_total">${{ cart_total.fare }}</div>
-            <div class="td operate"></div>
           </div>
           <div class="tr">
             <div class="td img"></div>
@@ -102,17 +80,11 @@
             <div class="td price"></div>
             <div class="td qty">總計</div>
             <div class="td p_total">${{ cart_total.text }}</div>
-            <div class="td operate"></div>
           </div>
         </div>
       </div>
       <div class="cart_bottom">
-        <router-link class="btn" :to="{ path: '/' }"
-          ><i class="fa fa-angle-double-left" aria-hidden="true"></i>
-          繼續購物</router-link
-        >
-        <router-link class="btn" :to="{ path: '/pay' }"
-          >下一步 <i class="fa fa-angle-double-right" aria-hidden="true"></i
+        <router-link class="btn" :to="{ path: '/' }">返回首頁 <i class="fa fa-angle-double-right" aria-hidden="true"></i
         ></router-link>
       </div>
     </div>
@@ -121,7 +93,7 @@
 <script>
 import bread from '@/components/bread/bread.vue'
 export default {
-  name: 'Cart',
+  name: 'Finish',
   components: {
     bread,
   },
@@ -129,7 +101,7 @@ export default {
     return {
       bread_list: [
         { id: 1, name: '首頁', url: '/' },
-        { id: 2, name: '購物車', url: '#' },
+        { id: 2, name: '訂購完成', url: '#' },
       ],
       bigTitle_open: false,
       fare: 500,

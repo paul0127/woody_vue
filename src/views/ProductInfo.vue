@@ -135,13 +135,6 @@ export default {
       choose_pic: 0,
       now_tab: 0,
       qty: 1,
-      bread_list: [
-        { id: 1, name: '首頁', url: '/' },
-        { id: 2, name: '商品專區', url: '#' },
-        { id: 3, name: '文創商品', url: '#' },
-        { id: 4, name: '文具類', url: '#' },
-        { id: 5, name: '【窗語】隨身碟', url: '#' },
-      ],
     }
   },
   mounted() {
@@ -149,6 +142,25 @@ export default {
     this.$store.dispatch('get_productClass')
   },
   computed: {
+    bread_list() {
+      let bread = [
+        { id: 1, name: '首頁', url: '/' },
+        { id: 2, name: '商品介紹', url: '/product' },
+      ]
+      bread.push({id:3,name:this.b_title.name,url:'#'})
+      bread.push({id:4,name:this.product_class.name,url:'/product/class_'+this.product_class.id})
+      bread.push({id:5,name:this.product_info.name,url:'#'})
+      return bread
+    },
+    b_title() {
+      let classID = Number(this.$route.params.classId)
+      let side_list = this.$store.state.product.side_list
+      return side_list.find((item) => item.sub.includes(classID))
+    },
+    product_class() {
+      let classID = this.$route.params.classId
+      return this.$store.getters.pro_class(classID)
+    },
     product_info() {
       let id = this.$route.params.id
       let info = this.$store.getters.pro_info(id)

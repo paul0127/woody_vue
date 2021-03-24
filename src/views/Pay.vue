@@ -28,7 +28,7 @@
       </div>
       <div class="form_box">
         <div class="order_title">
-          <input type="radio" id="radio" /><label for="radio">宅配到府</label>
+          <input type="radio" id="radio" v-model="ship" value="宅配到府"/><label for="radio">宅配到府</label>
         </div>
         <div class="list">
           <label>收件人姓名</label>
@@ -94,7 +94,7 @@
 <script>
 import bread from '@/components/bread/bread.vue'
 export default {
-  name: 'Cart',
+  name: 'Pay',
   components: {
     bread,
   },
@@ -111,7 +111,8 @@ export default {
       county: null,
       dist: null,
       addr:'',
-      memo:''
+      memo:'',
+      ship:''
     }
   },
   mounted() {
@@ -156,6 +157,10 @@ export default {
       this.dist = null
     },
     next(){
+      if(!this.name || !this.phone || !this.email || !this.county || !this.addr || !this.dist || !this.ship){
+        alert('請填寫完整資料!')
+        return
+      }
       let arr ={
         name:this.name,
         phone:this.phone,
@@ -163,7 +168,8 @@ export default {
         county:this.county,
         addr:this.addr,
         dist:this.dist,
-        memo:this.memo
+        memo:this.memo,
+        ship:this.ship
       }
 
       this.$store.dispatch('store_info',arr)

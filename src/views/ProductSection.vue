@@ -64,14 +64,7 @@ export default {
   },
   data() {
     return {
-      bigTitle_open: false,
-      bread_list: [
-        { id: 1, name: '首頁', url: '/' },
-        { id: 2, name: '商品介紹', url: '#' },
-        { id: 3, name: '文創商品', url: '#' },
-        { id: 4, name: '文具類', url: '#' },
-      ],
-      product_info: { id: 1, name: '家俱/馨享' },
+      bigTitle_open: false,     
     }
   },
   mounted() {
@@ -79,6 +72,15 @@ export default {
     this.$store.dispatch('get_productClass')
   },
   computed: {
+    bread_list() {
+      let bread = [
+        { id: 1, name: '首頁', url: '/' },
+        { id: 2, name: '商品介紹', url: '/product' },
+      ]
+      bread.push({id:3,name:this.b_title.name,url:'#'})
+      bread.push({id:4,name:this.product_class.name,url:'#'})
+      return bread
+    },
     b_title() {
       let classID = Number(this.$route.params.classId)
       let side_list = this.$store.state.product.side_list

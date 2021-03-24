@@ -2,31 +2,34 @@
   <div class="contain">
     <bread :bread_list="bread_list" :title="title"></bread>
     <div class="news_list">
-        <router-link
-          class="news_item"
-          :to="{ path: '/news/class_' + item.pc_code + '/' + item.id }"
-          v-for="item in news_list" :key="item.id"
-        >
-          <div class="image">
-            <div
-              class="img"
-              :style="{ backgroundImage: 'url(' + require('@/assets' + item.pic) + ')' }"
-            ></div>
+      <router-link
+        class="news_item"
+        :to="{ path: '/news/' + item.id }"
+        v-for="item in news_list"
+        :key="item.id"
+      >
+        <div class="image">
+          <div
+            class="img"
+            :style="{
+              backgroundImage: 'url(' + require('@/assets' + item.pic) + ')',
+            }"
+          ></div>
+        </div>
+        <div class="text">
+          <div class="time">{{ item.pubdate }}</div>
+          <div class="title">
+            {{ item.name }}
           </div>
-          <div class="text">
-            <div class="time">{{ item.pubdate }}</div>
-            <div class="title">
-              {{ item.name }}
-            </div>
-            <div class="desc">
-              {{ item.desc }}
-            </div>
+          <div class="desc">
+            {{ item.desc }}
           </div>
-          <div class="news_btn">
-            <div class="arrow"></div>
-            <div class="circle"></div>
-          </div>
-        </router-link>
+        </div>
+        <div class="news_btn">
+          <div class="arrow"></div>
+          <div class="circle"></div>
+        </div>
+      </router-link>
     </div>
     <pager :pager_total="pager_total" :now_page="now_page"></pager>
   </div>
@@ -42,31 +45,31 @@ export default {
     pager,
   },
   data() {
-    return {
-      
-    }
+    return {}
   },
-  mounted(){
+  mounted() {
     this.$store.dispatch('get_news')
   },
-  computed:{
-    bread_list(){
-      return this.$store.state.news.bread_list
+  computed: {
+    bread_list() {
+      let bread = [{ id: 1, name: '首頁', url: '/' }]
+      bread.push({id:2,name:this.title.name,url:'#'})
+      return bread
     },
-    title(){
+    title() {
       return this.$store.state.news.title
     },
-    news_list(){
+    news_list() {
       let query = this.$route.query.p ? this.$route.query.p : 1
       return this.$store.getters.news_list(query)
     },
-    pager_total(){
+    pager_total() {
       return this.$store.getters.pager
     },
-    now_page(){
+    now_page() {
       return this.$route.query.p ? Number(this.$route.query.p) : 1
-    }
-  }
+    },
+  },
 }
 </script>
 <style>
