@@ -37,8 +37,34 @@ export default {
       { id: 4, name: '服務據點', url: '/location' },
       { id: 5, name: '工藝師專區', url: '/artisan' },
     ],
-    cart:[]
+    product_list: [],
+    cart: [],
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    setcart(state, cart) {
+      state.cart = cart
+    },
+  },
+  actions: {
+    get_cart({ commit }) {
+      let cart = localStorage.getItem('cart')
+        ? JSON.parse(localStorage.getItem('cart'))
+        : []
+      commit('setcart', cart)
+    },
+    select_qty({ commit },{id,d}){
+      let cart = JSON.parse(localStorage.getItem('cart'))
+      let item = cart.find((i) => i.id == id)
+      if (d > 0 || item.qty > 1) item.qty = item.qty + d
+      localStorage.setItem('cart',JSON.stringify(cart))
+      commit('setcart',cart)
+    },
+    pro_delete({ commit },id){
+      let cart = JSON.parse(localStorage.getItem('cart'))
+      let index = cart.findIndex((i) => i.id == id)
+      cart.splice(index,1)
+      localStorage.setItem('cart',JSON.stringify(cart))
+      commit('setcart',cart)
+    }
+  },
 }

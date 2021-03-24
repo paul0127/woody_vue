@@ -1,27 +1,23 @@
 <template>
   <ul class="tool_bar">
-    <li class="login_btn"><router-link :to="{path : '/login'}">登入</router-link></li>
-    <li class="user_btn sub" :class="{ active: user_sub_open }">
-      <a @click="user_open"><img src="@/assets/img/user.svg"/></a>
-      <div class="sub_menu">
-        <ul>
-          <li><router-link :to="{path : '/member'}">會員資料</router-link></li>
-          <li><router-link :to="{path : '/policy'}">購物須知</router-link></li>
-          <li><router-link :to="{path : '/member/order'}">訂單查詢</router-link></li>
-        </ul>
-      </div>
-    </li>
+    
     <li class="cart_btn sub" :class="{ active: cart_sub_open }">
-      <a @click="cart_open"><img src="@/assets/img/icon-cart.svg" /><span>{{cartList.length}}</span></a>
+      <a @click="cart_open"
+        ><img src="@/assets/img/icon-cart.svg" /><span>{{
+          cartList.length
+        }}</span></a
+      >
       <div class="sub_menu">
         <ul>
           <li v-for="item in cartList" :key="item.id">
-            <div class="name">{{ item.name }}</div>
-            <div class="price">{{ item.priceText }}</div>
+            <div class="name">{{ item.name }}X{{ item.qty }}</div>
+            <div class="price">{{ item.p_total }}</div>
           </li>
         </ul>
         <div class="total">總計 {{ cart_total.text }}</div>
-        <div class="cart_in_btn"><router-link :to="{path : '/cart'}">立即結帳</router-link></div>
+        <div class="cart_in_btn">
+          <router-link :to="{ path: '/cart' }">立即結帳</router-link>
+        </div>
       </div>
     </li>
     <li class="search_btn">
@@ -56,7 +52,9 @@ export default {
     cartList() {
       return this.cart_list.map((c) => {
         c.price = Number(c.price)
+        c.qty = Number(c.qty)
         c.priceText = new Intl.NumberFormat().format(c.price)
+        c.p_total = new Intl.NumberFormat().format(c.price*c.qty)
         return c
       })
     },
@@ -64,7 +62,7 @@ export default {
       let total = 0
       let data = []
       this.cartList.forEach((c) => {
-        total = total + c.price
+        total = total + c.price * c.qty
       })
       data['price'] = total
       data['text'] = new Intl.NumberFormat().format(total)
@@ -91,8 +89,7 @@ export default {
   watch: {
     $route() {
       this.user_sub_open = 0
-      this.cart_sub_open = 0,
-      this.search_sub_open = 0
+      ;(this.cart_sub_open = 0), (this.search_sub_open = 0)
     },
   },
 }

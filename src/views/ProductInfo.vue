@@ -13,7 +13,11 @@
               <div class="product_pic">
                 <img
                   class="main_pic"
-                  :src="main_pic ? require('@/assets' + main_pic) : require('@/assets' + product_info.pic_list[0].pic)"
+                  :src="
+                    main_pic
+                      ? require('@/assets' + main_pic)
+                      : require('@/assets' + product_info.pic_list[0].pic)
+                  "
                 />
                 <ul class="small_pic">
                   <!--data-img 需要放顯示的大圖-->
@@ -40,15 +44,15 @@
                 <div class="price">原價 ${{ product_info.price }}</div>
                 <div class="purchase">
                   <div class="qty">
-                    <button class="minus">
+                    <button class="minus" @click="select_qty(-1)">
                       <img src="@/assets/img/product/minus.svg" />
                     </button>
-                    <input type="number" value="1" min="1" max="10" />
-                    <button class="plus">
+                    <input type="number" v-model="qty" min="1" max="10" />
+                    <button class="plus" @click="select_qty(1)">
                       <img src="@/assets/img/product/plus.svg" />
                     </button>
                   </div>
-                  <div class="btn">加入購物車</div>
+                  <div class="btn" @click="add_cart()">加入購物車</div>
                 </div>
               </div>
             </div>
@@ -127,9 +131,10 @@ export default {
   data() {
     return {
       bigTitle_open: false,
-      main_pic:'',
+      main_pic: '',
       choose_pic: 0,
       now_tab: 0,
+      qty: 1,
       bread_list: [
         { id: 1, name: '首頁', url: '/' },
         { id: 2, name: '商品專區', url: '#' },
@@ -158,6 +163,21 @@ export default {
     },
     tabs_check(c) {
       this.now_tab = c
+    },
+    select_qty(d) {
+      if (d > 0 || this.qty > 1) this.qty = this.qty + d
+    },
+    add_cart() {
+      let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
+      let item = cart.find(i=>i.id==this.product_info.id)
+      if(item){
+        item.qty = item.qty + this.qty
+      }else{
+        cart.push({id:this.product_info.id,qty:this.qty})
+      }
+      localStorage.setItem('cart',JSON.stringify(cart))
+      this.$store.dispatch('get_cart')
+      alert('加入購物車')
     },
   },
 }

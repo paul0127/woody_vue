@@ -26,12 +26,23 @@ export default {
   data() {
     return {}
   },
+  mounted() {
+    this.$store.dispatch('get_products')
+    this.$store.dispatch('get_cart')
+  },
   computed: {
     header_list() {
       return this.$store.state.common.header_list
     },
     cart_list() {
-      return this.$store.state.common.cart_list
+      let cart = this.$store.state.common.cart
+      let product = this.$store.state.product.product_list
+      let list = []
+      cart.forEach((item,index)=>{
+        let p = product.find(l=>l.id==item.id)
+        list[index] = {id:index+1,p_id:p.id,name:p.name,pc_code:p.pc_code,price:p.price,qty:item.qty}
+      })
+      return list
     },
   },
 }

@@ -72,6 +72,12 @@ const routes = [
     meta: {title: '商品內頁'}
   },
   {
+    path: '/cart',
+    name: 'Cart',
+    component: () => import(/* webpackChunkName: "Login" */ '../views/Cart.vue'),
+    meta: {title: '購物車'}
+  },
+  {
     path: '/login',
     name: 'Login',
     component: () => import(/* webpackChunkName: "Login" */ '../views/Login.vue'),
