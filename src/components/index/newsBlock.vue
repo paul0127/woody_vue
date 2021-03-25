@@ -3,25 +3,31 @@
     <div class="container">
       <!--大標題-->
       <div class="news_title">
-        <h1>{{news_info.name}}<span>|</span>{{news_info.ename}}</h1>
+        <h1>{{ news_block.name }}<span>|</span>{{ news_block.ename }}</h1>
       </div>
       <!--最新消息輪播-->
       <carousel
-      class="news_slider"
-      :items="1"
-      :autoplay="false"
-      :nav="true"
-      :dots="false"
-      :loop="true"
-    >
-        <div class="item" v-for="item in news_info.list" :key="item.id">
-          <h2>{{item.name}}</h2>
-          <p>{{item.desc}}</p>
-          <div class="place">{{item.place}}</div>
-          <div class="btn"><router-link :to="{path:'/news/class_'+item.pc_code+'/'+item.id}">READ MORE</router-link></div>
+        class="news_slider"
+        :items="1"
+        :autoplay="false"
+        :nav="true"
+        :dots="false"
+        :loop="true"
+      >
+        <div class="item" v-for="item in news_list" :key="item.id">
+          <h2>{{ item.name }}</h2>
+          <p>{{ item.desc }}</p>
+          <div class="place">{{ item.place }}</div>
+          <div class="btn">
+            <router-link :to="{ path: '/news/' + item.id }"
+              >READ MORE</router-link
+            >
+          </div>
         </div>
       </carousel>
-      <div class="more"><router-link :to="{path:'/news/class_'+news_info.id}">更多消息 +</router-link></div>
+      <div class="more">
+        <router-link :to="{ path: '/news' }">更多消息 +</router-link>
+      </div>
     </div>
   </section>
 </template>
@@ -29,14 +35,22 @@
 import carousel from 'vue-owl-carousel'
 
 export default {
-  props:{
-    news_info:Object,
+  props: {
+    news_block: Object,
   },
   components: { carousel },
-  data(){
-    return {
-    }
-  }
+  data() {
+    return { news_list: [] }
+  },
+  created() {
+    this.$store.dispatch('get_news')
+    let newsList = this.$store.state.news.news_list
+    let list = newsList.filter((item) => this.news_block.list.includes(item.id))
+    this.news_list = list
+  },
+  methods: {
+    
+  },
 }
 </script>
 <style>

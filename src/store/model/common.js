@@ -1,20 +1,5 @@
 export default {
   state: {
-    header_list: [
-      {
-        id: 1,
-        name: '關於我們',
-        url: '#',
-        sub: [
-          { id: 5, name: '品牌介紹', url: '/Brand' },
-          { id: 6, name: '工藝師專區', url: '/artisan' },
-          { id: 7, name: '企業服務', url: '/service' },
-        ],
-      },
-      { id: 2, name: '最新消息', url: '/news', sub: [] },
-      { id: 3, name: '商品介紹', url: '/product', sub: [] },
-      { id: 4, name: '據點', url: '/location', sub: [] },
-    ],
     company: {
       footer_logo: '/img/img-logoWhite-footer.png',
       tel: '03-9605665',
@@ -23,14 +8,29 @@ export default {
       fb_url: 'https://www.facebook.com',
       ig_url: 'https://www.instagram.com/',
       line_url: 'https://line.me/zh-hant/',
+      header_list: [
+        {
+          id: 1,
+          name: '關於我們',
+          url: '#',
+          sub: [
+            { id: 5, name: '品牌介紹', url: '/Brand' },
+            { id: 6, name: '工藝師專區', url: '/artisan' },
+            { id: 7, name: '企業服務', url: '/service' },
+          ],
+        },
+        { id: 2, name: '最新消息', url: '/news', sub: [] },
+        { id: 3, name: '商品介紹', url: '/product', sub: [] },
+        { id: 4, name: '據點', url: '/location', sub: [] },
+      ],
+      footer_list: [
+        { id: 1, name: '關於我們', url: '/Brand' },
+        { id: 2, name: '最新消息', url: '/news' },
+        { id: 3, name: '商品介紹', url: '/product' },
+        { id: 4, name: '服務據點', url: '/location' },
+        { id: 5, name: '工藝師專區', url: '/artisan' },
+      ],
     },
-    footer_list: [
-      { id: 1, name: '關於我們', url: '/Brand' },
-      { id: 2, name: '最新消息', url: '/news' },
-      { id: 3, name: '商品介紹', url: '/product' },
-      { id: 4, name: '服務據點', url: '/location' },
-      { id: 5, name: '工藝師專區', url: '/artisan' },
-    ],
     cart: [],
     dist: [],
     info: {},

@@ -9,7 +9,7 @@
       <div class="list row">
         <div
           class="col-md-4"
-          v-for="(item, index) in video_info.list"
+          v-for="(item, index) in video_block.list"
           :key="item.id"
         >
           <div class="item" :key="index" @click="imageIndex = index">
@@ -26,7 +26,7 @@
       </div>
     </div>
     <CoolLightBox
-      :items="video_info.list"
+      :items="video_block.list"
       :index="imageIndex"
       @close="imageIndex = null"
     >
@@ -38,7 +38,7 @@
 import CoolLightBox from 'vue-cool-lightbox'
 import 'vue-cool-lightbox/dist/vue-cool-lightbox.min.css'
 export default {
-  props: { video_info: Object },
+  props: { video_block: Object },
   data() {
     return {
       imageIndex: null,
@@ -46,11 +46,6 @@ export default {
   },
   components: {
     CoolLightBox,
-  },
-  methods: {
-    imgSrc(img) {
-      return require('@/assets' + img)
-    },
   },
 }
 </script>

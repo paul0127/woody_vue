@@ -3,20 +3,20 @@
     <div class="container">
       <!--大標題-->
       <div class="title_index">
-        <h1>{{product_info.name}}<span>|</span>{{product_info.ename}}</h1>
-        <div class="more"><router-link :to="{ path: '/product/class_'+product_info.id }">更多商品 +</router-link></div>
+        <h1>{{product_block.name}}<span>|</span>{{product_block.ename}}</h1>
+        <div class="more"><router-link :to="{ path: '/product' }">更多商品 +</router-link></div>
       </div>
       <!--產品條列-->
       <div class="list row">
         <div
           class="col-md-3 col-sm-6 col-xs-6"
-          v-for="item in product_info.list"
+          v-for="item in product_list"
           :key="item.id"
         >
           <router-link class="item" :to="{ path: '/product/class_'+item.pc_code+'/'+item.id }">
             <div
               class="img"
-              :style="{ backgroundImage: 'url(' + require('@/assets' + item.pic) + ')' }"
+              :style="{ backgroundImage: 'url(' + require('@/assets' + item.pic_list[0].pic) + ')' }"
             ></div>
             <div class="title">{{ item.name }}</div>
             <div class="price"><span>$</span>{{item.price}}</div>
@@ -29,9 +29,15 @@
 
 <script>
 export default {
-  props: { product_info: Object },
+  props: { product_block: Object },
   data() {
-    return {}
+    return {product_list:[]}
+  },
+  created() {
+    this.$store.dispatch('get_products')
+    let productList = this.$store.state.product.product_list
+    let list = productList.filter((item) => this.product_block.list.includes(item.id))
+    this.product_list = list
   },
 }
 </script>

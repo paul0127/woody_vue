@@ -1,9 +1,9 @@
 <template>
   <div>
-    <sliderBlack :banner_list="banner_list"></sliderBlack>
-    <newsBlock :news_info="news_info"></newsBlock>
-    <productBlock :product_info="product_info"></productBlock>
-    <videoBlock :video_info="video_info"></videoBlock>
+    <sliderBlack :banner_block="banner_block"></sliderBlack>
+    <newsBlock :news_block="news_block"></newsBlock>
+    <productBlock :product_block="product_block"></productBlock>
+    <videoBlock :video_block="video_block"></videoBlock>
     <artisanBlock></artisanBlock>
   </div>
 </template>
@@ -28,17 +28,17 @@ export default {
     return {}
   },
   computed: {
-    banner_list() {
-      return this.$store.state.home.banner_list
+    banner_block() {
+      return this.$store.state.home.banner_block
     },
-    news_info() {
-      return this.$store.state.home.news_info
+    news_block() {
+      return this.$store.state.home.news_block
     },
-    product_info() {
-      return this.$store.state.home.product_info
+    product_block() {
+      return this.$store.state.home.product_block
     },
-    video_info() {
-      return this.$store.state.home.video_info
+    video_block() {
+      return this.$store.state.home.video_block
     },
   },
 }

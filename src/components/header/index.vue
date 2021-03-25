@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     header_list() {
-      return this.$store.state.common.header_list
+      return this.$store.state.common.company.header_list
     },
     cart_list() {
       let cart = this.$store.state.common.cart

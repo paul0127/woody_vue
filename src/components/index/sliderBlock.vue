@@ -8,9 +8,9 @@
       :dots="true"
       :loop="true"
     >
-      <img v-for="item in banner_list" :key="item.id" :src="require('@/assets'+item.pic)" />
+      <img v-for="item in banner_block" :key="item.id" :src="require('@/assets'+item.pic)" />
     </carousel>
-    <div class="go_to"></div>
+    <div class="go_to" @click="toNews()"></div>
   </div>
 </template>
 
@@ -19,7 +19,7 @@ import carousel from 'vue-owl-carousel'
 
 export default {
   props:{
-    banner_list:Array
+    banner_block:Array
   },
   components: {
     carousel,
@@ -27,6 +27,15 @@ export default {
   data() {
     return {}
   },
+  methods:{
+    toNews(){
+      let news = document.querySelector('#news')
+      window.scroll({
+        top:news.offsetTop,
+        behavior:'smooth'
+      })
+    }
+  }
 }
 </script>
 
