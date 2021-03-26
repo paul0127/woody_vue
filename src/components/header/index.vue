@@ -40,7 +40,7 @@ export default {
       let list = []
       cart.forEach((item,index)=>{
         let p = product.find(l=>l.id==item.id)
-        list[index] = {id:index+1,p_id:p.id,name:p.name,pc_code:p.pc_code,price:p.price,qty:item.qty}
+        list[index] = {id:p.id,name:p.name,pc_code:p.pc_code,price:p.price,qty:item.qty}
       })
       return list
     },

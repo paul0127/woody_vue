@@ -36,6 +36,16 @@ export default {
         this.$router.replace({ query: { p: query + c } })
     },
   },
+  watch: {
+    $route() {
+      let query = this.$route.query.p ? Number(this.$route.query.p) : 1
+      if (query > this.pager_total) {
+        this.$router.replace({ query: { p: this.pager_total } })
+      } else if (query < 1) {
+        this.$router.replace({ query: { p: 1 } })
+      }
+    },
+  },
 }
 </script>
 <style scoped>
