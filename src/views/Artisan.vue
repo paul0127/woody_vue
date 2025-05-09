@@ -236,4 +236,48 @@ export default {
   max-width: 100%;
 }
 
+@media (max-width: 992px) {
+  .artisan_item {
+    width: 100%;
+    max-width: 750px;
+    padding: 0 15px;
+    margin: 0 auto 2rem auto;
+  }
+  .artisan_item .img {
+    display: none;
+  }
+  .artisan_item.left .text .main {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+  }
+  .artisan_item.right .text .main {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row-reverse;
+  }
+  .artisan_item .text .main .m_img {
+    display: block;
+    width: 163px;
+  }
+  .artisan_item .text .main .name {
+    font-size: 1.75rem;
+  }
+  .artisan_item .text .main .name::after {
+    margin: 0.75rem 0 0 0;
+  }
+  .artisan_item.left .text .main .name::after {
+    margin-right: auto;
+  }
+  .artisan_item.right .text .main .name::after {
+    margin-left: auto;
+  }
+  .artisan_item .text .main .name br {
+    display: none;
+  }
+  .artisan_item .text .desc {
+    margin-top: 1rem;
+  }
+}
+
 </style>
