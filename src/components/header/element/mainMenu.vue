@@ -89,4 +89,9 @@ ul.main_menu > li.sub > div.sub_menu > ul > li > a:hover {
 ul.main_menu > li:hover > div.sub_menu {
   transform: scaleY(1);
 }
+@media (max-width: 992px) {
+  ul.main_menu{
+    display: none;
+  }
+}
 </style>

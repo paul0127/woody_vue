@@ -4,9 +4,7 @@
     <!-- 產品列表內容開始 -->
     <div class="container">
       <div class="row">
-        <div class="col-xs-12 col-sm-3 hidden-xs">
-          <sideMenu></sideMenu>
-        </div>
+        <sideMenu></sideMenu>
         <div class="col-xs-12 col-sm-9">
           <div
             class="product_section"
@@ -47,6 +45,8 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
+
 import bread from '@/components/bread/bread.vue'
 import sideMenu from '@/components/sideMenu/sideMenu.vue'
 
@@ -62,10 +62,10 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch('get_products')
-    this.$store.dispatch('get_productClass')
+    this.productInit()
   },
   computed: {
+    ...mapActions(['productInit']),
     bread_list() {
       let bread = [
         { id: 1, name: '首頁', url: '/' },

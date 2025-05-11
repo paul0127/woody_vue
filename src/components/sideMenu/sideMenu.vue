@@ -1,16 +1,18 @@
 <template>
-  <ul class="side-menu">
-    <li v-for="item in side_list" :key="item.id">
-      <a href="javascript:(0)">{{ item.name }}</a>
-      <ul class="side-menu-child">
-        <li v-for="i in item.sub" :key="i.id">
-          <router-link :to="{ path: '/product/class_' + i.id }">{{
-            i.name
-          }}</router-link>
-        </li>
-      </ul>
-    </li>
-  </ul>
+  <div class="col-xs-12 col-sm-3 d-none d-md-block">
+    <ul class="side-menu">
+      <li v-for="item in side_list" :key="item.id">
+        <a href="javascript:(0)">{{ item.name }}</a>
+        <ul class="side-menu-child">
+          <li v-for="i in item.sub" :key="i.id">
+            <router-link :to="{ path: '/product/class_' + i.id }">{{
+              i.name
+            }}</router-link>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </template>
 <script>
 export default {

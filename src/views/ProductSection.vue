@@ -4,9 +4,7 @@
     <!-- 產品列表內容開始 -->
     <div class="container">
       <div class="row">
-        <div class="col-xs-12 col-sm-3 hidden-xs">
-          <sideMenu></sideMenu>
-        </div>
+        <sideMenu></sideMenu>
         <div class="col-xs-12 col-sm-9">
           <div class="prod-list-banner">
             <a href="#">
@@ -18,12 +16,12 @@
           </div>
           <div class="product_section">
             <div class="title_product">
-              <h1>{{b_title.name}}/{{ product_class.name }}</h1>
+              <h1>{{ b_title.name }}/{{ productClass.name }}</h1>
             </div>
             <div class="row prod-list">
               <div
                 class="col-xs-6 col-sm-4"
-                v-for="i in product_list"
+                v-for="i in productList"
                 :key="i.id"
               >
                 <router-link
@@ -41,7 +39,7 @@
           </div>
           <pager
             :pager_total="pager_total"
-            :now_page="now_page"
+            :now_page="nowpage"
             v-if="pager_total > 0"
           ></pager>
         </div>
@@ -51,6 +49,8 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
+
 import bread from '@/components/bread/bread.vue'
 import sideMenu from '@/components/sideMenu/sideMenu.vue'
 import pager from '@/components/pager/pager.vue'
@@ -64,43 +64,83 @@ export default {
   },
   data() {
     return {
-      bigTitle_open: false,     
-    }
-  },
-  mounted() {
-    this.$store.dispatch('get_products')
-    this.$store.dispatch('get_productClass')
-  },
-  computed: {
-    bread_list() {
-      let bread = [
+      bigTitle_open: false,
+      nowpage: 1,
+      allProducts: [],
+      productList: [],
+      bread_list: [
         { id: 1, name: '首頁', url: '/' },
         { id: 2, name: '商品介紹', url: '/product' },
-      ]
-      bread.push({id:3,name:this.b_title.name,url:'#'})
-      bread.push({id:4,name:this.product_class.name,url:'#'})
-      return bread
-    },
+      ],
+      classID: '',
+      productClass: {
+        name: '',
+      },
+    }
+  },
+  async mounted() {
+    this.breadList()
+  },
+  computed: {
     b_title() {
-      let classID = Number(this.$route.params.classId)
-      let side_list = this.$store.state.product.side_list
-      return side_list.find((item) => item.sub.includes(classID))
+      let side_list = this.$store.state.product.bigSideList
+      let obj = side_list.find((item) => item.sub.includes(this.classID))
+
+      return obj ? obj : { neme: '' }
     },
-    product_class() {
-      let classID = this.$route.params.classId
-      return this.$store.getters.pro_class(classID)
-    },
-    product_list() {
-      let classID = this.$route.params.classId
-      let query = this.$route.query.p ? this.$route.query.p : 1
-      return this.$store.getters.pro_list(classID, query)
+    row_count() {
+      return this.$store.state.product.row_count
     },
     pager_total() {
-      let classID = this.$route.params.classId
-      return this.$store.getters.pro_pager(classID)
+      return Math.ceil(
+        this.allProducts.filter((item) => item.pc_code == this.classID).length /
+          this.row_count
+      )
     },
-    now_page() {
-      return this.$route.query.p ? Number(this.$route.query.p) : 1
+  },
+  methods: {
+    ...mapActions(['productInit']),
+    async init() {
+      await this.productInit()
+
+      this.allProducts = this.$store.state.product.all_product_list
+      this.classID = Number(this.$route.params.classId)
+      this.nowpage = this.$route.query.p ? Number(this.$route.query.p) : 1
+
+      this.getProductList()
+      this.getProductClass()
+    },
+    getProductList() {
+      this.productList = this.allProducts
+        .filter((item) => item.pc_code == this.classID)
+        .slice(
+          this.row_count * (this.nowpage - 1),
+          this.row_count * this.nowpage
+        )
+    },
+    getProductClass() {
+      let allProductClass = this.$store.state.product.all_product_class
+      this.productClass = allProductClass.find(
+        (item) => item.id == this.classID
+      )
+    },
+    breadList() {
+      if (this.product_class) {
+        this.bread_list.push({ id: 3, name: this.b_title.name, url: '#' })
+        this.bread_list.push({
+          id: 4,
+          name: this.product_class?.name,
+          url: '#',
+        })
+      }
+    },
+  },
+  watch: {
+    $route: {
+      handler() {
+        this.init()
+      },
+      immediate: true,
     },
   },
 }

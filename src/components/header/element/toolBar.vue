@@ -1,6 +1,5 @@
 <template>
   <ul class="tool_bar">
-    
     <li class="cart_btn sub" :class="{ active: cart_sub_open }">
       <a @click="cart_open"
         ><img src="@/assets/img/icon-cart.svg" /><span>{{
@@ -9,13 +8,16 @@
       >
       <div class="sub_menu">
         <ul>
+          <template v-if="cartList.length==0">
+            <div class="empty">購物車尚無商品</div>
+          </template>
           <li v-for="item in cartList" :key="item.id">
             <div class="name">{{ item.name }}X{{ item.qty }}</div>
             <div class="price">{{ item.p_total }}</div>
           </li>
         </ul>
-        <div class="total">總計 {{ cart_total.text }}</div>
-        <div class="cart_in_btn">
+        <div class="total" v-if="cartList.length">總計 {{ cart_total.text }}</div>
+        <div class="cart_in_btn" v-if="cartList.length">
           <router-link :to="{ path: '/cart' }">立即結帳</router-link>
         </div>
       </div>
@@ -54,7 +56,7 @@ export default {
         c.price = Number(c.price)
         c.qty = Number(c.qty)
         c.priceText = new Intl.NumberFormat().format(c.price)
-        c.p_total = new Intl.NumberFormat().format(c.price*c.qty)
+        c.p_total = new Intl.NumberFormat().format(c.price * c.qty)
         return c
       })
     },
@@ -258,5 +260,23 @@ ul.tool_bar > li.search_btn {
 }
 .search_bar .search_inner button:hover {
   opacity: 0.8;
+}
+@media (max-width: 992px) {
+  ul.tool_bar li {
+    display: none;
+  }
+  ul.tool_bar li.search_btn {
+    display: flex;
+  }
+  .search_bar .search_inner {
+    flex-wrap: wrap;
+  }
+  .search_bar .search_inner input {
+    width: 100%;
+    margin: 1rem 0 2rem 0;
+  }
+  .search_bar .search_inner button {
+    width: 100%;
+  }
 }
 </style>

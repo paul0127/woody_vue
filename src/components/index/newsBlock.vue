@@ -172,4 +172,40 @@ export default {
 .news_slider.owl-carousel .owl-nav button.owl-next span {
   margin-bottom: 10px;
 }
+@media (max-width: 992px) {
+  .news_block {
+    padding: 2.5rem 0;
+  }
+  .news_title {
+    border-bottom: none;
+  }
+  .news_title h1 {
+    font-size: 1.25rem;
+  }
+  .news_title::after {
+    width: 180px;
+  }
+  .news_block .more {
+    width: 88px;
+    height: 40px;
+  }
+  .news_block .more a {
+    font-size: 10px;
+  }
+  .news_slider .item h2 {
+    margin: 0.8rem 0;
+  }
+  .news_slider .item p {
+    margin-bottom: 0;
+  }
+  .news_slider .item h2,
+  .news_slider .item p,
+  .news_slider .item .place {
+    font-size: 1rem;
+  }
+  .news_slider .item .btn a {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+  }
+}
 </style>

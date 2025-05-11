@@ -53,7 +53,7 @@ export default {
   computed: {
     bread_list() {
       let bread = [{ id: 1, name: '首頁', url: '/' }]
-      bread.push({id:2,name:this.title.name,url:'#'})
+      bread.push({ id: 2, name: this.title.name, url: '#' })
       return bread
     },
     title() {
@@ -173,5 +173,47 @@ a.news_item:hover .news_btn .arrow {
 }
 a.news_item:hover .news_btn .circle {
   transform: scale(1);
+}
+@media (max-width: 992px) {
+  .news_list {
+    width: 100%;
+    max-width: 750px;
+    padding: 0 15px;
+    margin: 0 auto;
+  }
+  a.news_item {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+  a.news_item .image {
+    margin: 0 !important;
+    flex: 0 0 120px;
+    order: 1;
+  }
+  a.news_item .text {
+    margin: 0 !important;
+    flex-basis: 100%;
+    order: 3;
+    margin-top: 0.9rem !important;
+  }
+  a.news_item .text .time {
+    font-size: 0.75rem;
+    margin-bottom: 0;
+  }
+  a.news_item .text .title {
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+  }
+  a.news_item .news_btn {
+    flex-basis: 50%;
+    order: 2;
+  }
+  a.news_item .news_btn .arrow {
+    margin-right: 25px;
+  }
+  a.news_item .news_btn .circle {
+    right: 5px;
+  }
 }
 </style>

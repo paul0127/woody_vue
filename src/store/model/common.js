@@ -34,6 +34,7 @@ export default {
     cart: [],
     dist: [],
     info: {},
+    menuToggle: false,
   },
   mutations: {
     setdist(state, dist) {
@@ -44,6 +45,13 @@ export default {
     },
     setinfo(state, info) {
       state.info = info
+    },
+    setMenuToggle(state, toggle) {
+      if (toggle !== undefined) {
+        state.menuToggle = toggle
+      } else {
+        state.menuToggle = !state.menuToggle
+      }
     },
   },
   actions: {
@@ -80,6 +88,13 @@ export default {
     store_info({ commit }, arr) {
       localStorage.setItem('info', JSON.stringify(arr))
       commit('setinfo', arr)
+    },
+    mobileMenuToggle({ commit }, toggle) {
+      if (toggle !== undefined) {
+        commit('setMenuToggle', toggle)
+      } else {
+        commit('setMenuToggle')
+      }
     },
   },
 }

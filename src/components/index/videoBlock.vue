@@ -87,4 +87,12 @@ export default {
   font-weight: 700;
   line-height: 1.5;
 }
+@media (max-width: 992px) {
+  .video_block .list {
+    margin-top: 1.25rem;
+  }
+  .video_block .list .item {
+    margin-bottom: 1.25rem;
+  }
+}
 </style>

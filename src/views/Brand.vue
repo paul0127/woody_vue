@@ -30,15 +30,15 @@
             <div class="title_inner"><span>品牌事蹟</span></div>
           </div>
           <div class="list">
-            <div class="item" v-for="(item,index) in list" :key="item.id">
+            <div class="item" v-for="(item, index) in list" :key="item.id">
               <div class="years">
-                <div class="year">{{item.year}}</div>
-                <div class="now" v-if="index==list.length-1">迄今</div>
+                <div class="year">{{ item.year }}</div>
+                <div class="now" v-if="index == list.length - 1">迄今</div>
               </div>
               <div class="text">
-                <label>{{item.year}}</label>
+                <label>{{ item.year }}</label>
                 <ul class="desc">
-                  <li v-for="i in item.sub" :key="i.id">{{i.con}}</li>
+                  <li v-for="i in item.sub" :key="i.id">{{ i.con }}</li>
                 </ul>
               </div>
             </div>
@@ -62,9 +62,9 @@ export default {
         { id: 2, name: '關於我們', url: '#' },
         { id: 3, name: '品牌介紹', url: '#' },
       ],
-      title:{
-        name:'品牌介紹',
-        ename:'Brand'
+      title: {
+        name: '品牌介紹',
+        ename: 'Brand',
       },
       list: [
         {
@@ -153,11 +153,13 @@ export default {
             },
             {
               id: 4,
-              con: '與台北市松山區民族國民小學、台灣家具產業協會、全聯善美的文化藝術基金會共同舉辦【趣·傳藝】民族國小美術班木雕特展',
+              con:
+                '與台北市松山區民族國民小學、台灣家具產業協會、全聯善美的文化藝術基金會共同舉辦【趣·傳藝】民族國小美術班木雕特展',
             },
             {
               id: 5,
-              con: '參與國立臺北科技大學木藝培育暨設計研發中心舉辦的展覽『木·作·家 15+1木藝聯盟成果展』',
+              con:
+                '參與國立臺北科技大學木藝培育暨設計研發中心舉辦的展覽『木·作·家 15+1木藝聯盟成果展』',
             },
           ],
         },
@@ -334,5 +336,26 @@ export default {
 .brand .bottom .list .item .text .desc li::before {
   content: '-';
   margin-right: 5px;
+}
+@media (max-width: 992px) {
+  .brand .top {
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .brand .top .img {
+    display: none;
+  }
+  .brand .bottom .img img {
+    margin-bottom: 1rem;
+  }
+  .brand .top .text .title {
+    margin-bottom: 1rem;
+  }
+  .brand .bottom .title::before {
+    display: none;
+  }
+  .brand .bottom .list .item .years {
+    display: none;
+  }
 }
 </style>

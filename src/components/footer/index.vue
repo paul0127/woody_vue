@@ -147,4 +147,38 @@ footer .copyright {
   font-size: 1.25rem;
   margin-top: 4.5rem;
 }
+@media (max-width: 992px) {
+  footer .footer_content {
+    padding: 0;
+  }
+  footer .footer_link {
+    margin-top: 2.25rem;
+  }
+  footer .footer_link ul {
+    flex-wrap: wrap;
+  }
+  footer .footer_link ul li {
+    flex-basis: 50%;
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  footer .footer_link ul li::after {
+    display: none;
+  }
+  footer .footer_bottom {
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  footer .footer_bottom .contact {
+    font-size: 1rem;
+    flex-basis: 100%;
+  }
+  footer .footer_bottom .social {
+    flex-basis: 100%;
+    margin-top: 2.25rem;
+  }
+  footer .copyright {
+    margin-top: 2.25rem;
+  }
+}
 </style>

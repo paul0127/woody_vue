@@ -23,6 +23,11 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
+router.afterEach(() => {
+    store.dispatch('mobileMenuToggle',false)
+    window.scrollTo(0,0);
+});
+
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 

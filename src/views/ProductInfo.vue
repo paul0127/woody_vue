@@ -4,21 +4,12 @@
     <!-- 產品內頁內容開始 -->
     <div class="container">
       <div class="row">
-        <div class="col-xs-12 col-sm-3 hidden-xs">
-          <sideMenu></sideMenu>
-        </div>
+        <sideMenu></sideMenu>
         <div class="col-xs-12 col-sm-9">
           <div class="product_info">
             <div class="product_top">
               <div class="product_pic">
-                <img
-                  class="main_pic"
-                  :src="
-                    main_pic
-                      ? require('@/assets' + main_pic)
-                      : require('@/assets' + product_info.pic_list[0].pic)
-                  "
-                />
+                <img class="main_pic" :src="main_pic" />
                 <ul class="small_pic">
                   <!--data-img 需要放顯示的大圖-->
                   <li
@@ -119,6 +110,8 @@
   </div>
 </template>
 <script>
+import { mapActions } from 'vuex'
+
 import bread from '@/components/bread/bread.vue'
 import sideMenu from '@/components/sideMenu/sideMenu.vue'
 
@@ -135,11 +128,17 @@ export default {
       choose_pic: 0,
       now_tab: 0,
       qty: 1,
+      classID: '',
+      productId: '',
+      allProductClass: '',
+      productClass: {},
+      product_info: {
+        pic_list: [],
+      },
     }
   },
-  mounted() {
-    this.$store.dispatch('get_products')
-    this.$store.dispatch('get_productClass')
+  async mounted() {
+    await this.init()
   },
   computed: {
     bread_list() {
@@ -147,31 +146,48 @@ export default {
         { id: 1, name: '首頁', url: '/' },
         { id: 2, name: '商品介紹', url: '/product' },
       ]
-      bread.push({id:3,name:this.b_title.name,url:'#'})
-      bread.push({id:4,name:this.product_class.name,url:'/product/class_'+this.product_class.id})
-      bread.push({id:5,name:this.product_info.name,url:'#'})
+      bread.push({ id: 3, name: this.b_title.name, url: '#' })
+      bread.push({
+        id: 4,
+        name: this.productClass.name,
+        url: '/product/class_' + this.productClass.id,
+      })
+      bread.push({ id: 5, name: this.product_info.name, url: '#' })
       return bread
     },
     b_title() {
-      let classID = Number(this.$route.params.classId)
-      let side_list = this.$store.state.product.side_list
-      return side_list.find((item) => item.sub.includes(classID))
-    },
-    product_class() {
-      let classID = this.$route.params.classId
-      return this.$store.getters.pro_class(classID)
-    },
-    product_info() {
-      let id = this.$route.params.id
-      let info = this.$store.getters.pro_info(id)
+      let side_list = this.$store.state.product.bigSideList
+      let obj = side_list.find((item) => item.sub.includes(this.classID))
 
-      return info
+      return obj ? obj : { neme: '' }
     },
   },
   methods: {
+    ...mapActions(['productInit']),
+    async init() {
+      await this.productInit()
+      this.allProducts = this.$store.state.product.all_product_list
+      this.classID = Number(this.$route.params.classId)
+      this.productId = this.$route.params.id
+
+      this.getProductClass()
+      this.getProductInfo()
+    },
+    getProductClass() {
+      let allProductClass = this.$store.state.product.all_product_class
+      this.productClass = allProductClass.find(
+        (item) => item.id == this.classID
+      )
+    },
+    getProductInfo() {
+      this.product_info = this.allProducts.find(
+        (item) => item.id == this.productId
+      )
+      if (this.product_info.pic_list.length > 0) this.choosePic(0)
+    },
     choosePic(index) {
       this.choose_pic = index
-      this.main_pic = this.product_info.pic_list[index].pic
+      this.main_pic = require(`@/assets${this.product_info.pic_list[index].pic}`)
     },
     tabs_check(c) {
       this.now_tab = c
@@ -180,14 +196,16 @@ export default {
       if (d > 0 || this.qty > 1) this.qty = this.qty + d
     },
     add_cart() {
-      let cart = localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
-      let item = cart.find(i=>i.id==this.product_info.id)
-      if(item){
+      let cart = localStorage.getItem('cart')
+        ? JSON.parse(localStorage.getItem('cart'))
+        : []
+      let item = cart.find((i) => i.id == this.product_info.id)
+      if (item) {
         item.qty = item.qty + this.qty
-      }else{
-        cart.push({id:this.product_info.id,qty:this.qty})
+      } else {
+        cart.push({ id: this.product_info.id, qty: this.qty })
       }
-      localStorage.setItem('cart',JSON.stringify(cart))
+      localStorage.setItem('cart', JSON.stringify(cart))
       this.$store.dispatch('get_cart')
       alert('加入購物車')
     },
@@ -424,5 +442,42 @@ export default {
   font-size: 18px;
   font-weight: 500;
   padding-bottom: 15px;
+}
+@media (max-width: 992px) {
+  .product_top {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .product_top .product_pic {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 0.75rem;
+  }
+  .purchase {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    width: 100%;
+    padding: 15px;
+  }
+  .purchase .btn {
+    flex: 1;
+  }
+  .purchase .qty {
+    flex: 2;
+    margin-right: 10px;
+  }
+}
+
+.editor {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.editor img {
+  margin-bottom: 0.75rem;
+  max-width: 100%;
 }
 </style>

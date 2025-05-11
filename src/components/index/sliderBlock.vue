@@ -8,7 +8,11 @@
       :dots="true"
       :loop="true"
     >
-      <img v-for="item in banner_block" :key="item.id" :src="require('@/assets'+item.pic)" />
+      <img
+        v-for="item in banner_block"
+        :key="item.id"
+        :src="require('@/assets' + item.pic)"
+      />
     </carousel>
     <div class="go_to" @click="toNews()"></div>
   </div>
@@ -18,8 +22,8 @@
 import carousel from 'vue-owl-carousel'
 
 export default {
-  props:{
-    banner_block:Array
+  props: {
+    banner_block: Array,
   },
   components: {
     carousel,
@@ -27,20 +31,22 @@ export default {
   data() {
     return {}
   },
-  methods:{
-    toNews(){
+  methods: {
+    toNews() {
       let news = document.querySelector('#news')
       window.scroll({
-        top:news.offsetTop,
-        behavior:'smooth'
+        top: news.offsetTop,
+        behavior: 'smooth',
       })
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style>
-.slider_block{position: relative;}
+.slider_block {
+  position: relative;
+}
 .slider_block .slider .owl-dots {
   position: absolute;
   right: 20px;
@@ -90,5 +96,27 @@ export default {
 }
 .slider_block .go_to:hover::after {
   transform: translateY(3px);
+}
+@media (max-width: 992px) {
+  .slider_block .slider .owl-dots {
+    bottom: 10%;
+    right: 16px;
+  }
+  .slider_block .slider .owl-dots .owl-dot {
+    width: 10px;
+    height: 10px;
+    margin: 6px;
+  }
+
+  .slider_block .go_to {
+    left: calc(50% - 18px);
+    bottom: -18px;
+    width: 36px;
+    height: 36px;
+  }
+  .slider_block .go_to::after {
+    width: 14px;
+    height: 14px;
+  }
 }
 </style>

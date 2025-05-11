@@ -78,4 +78,18 @@ export default {
   color: #b28146;
   font-size: 1.15rem;
 }
+@media (max-width: 992px) {
+  .products_block {
+    padding-top: 3rem;
+  }
+  .products_block .col-sm-6:nth-child(2n + 1) {
+    clear: both;
+  }
+  .products_block .list {
+    margin-top: 1.25rem;
+  }
+  .products_block .list .item {
+    margin-bottom: 1.25rem;
+  }
+}
 </style>
