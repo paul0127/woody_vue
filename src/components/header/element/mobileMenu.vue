@@ -28,35 +28,42 @@
     <div class="bottom">
       <ul>
         <li class="login_btn">
-          <a href="login.html">登入</a>
+          <router-link to="login">登入</router-link>
         </li>
-        <li class="user_btn sub" :class="{'active':bottomSub=='user_btn'}">
-          <a @click="bottomSubToggle('user_btn')"><img src="@/assets/img/user.svg"/></a>
+        <li class="user_btn sub" :class="{ active: bottomSub == 'user_btn' }">
+          <a @click="bottomSubToggle('user_btn')"
+            ><img src="@/assets/img/user.svg"
+          /></a>
           <div class="_sub_menu">
             <ul>
-              <li><a href="member.html">會員資料</a></li>
-              <li><a href="policy.html">購物須知</a></li>
-              <li><a href="member_order.html">訂單查詢</a></li>
+              <li><router-link to="/">會員資料</router-link></li>
+              <li><router-link to="/">購物須知</router-link></li>
+              <li><router-link to="/">訂單查詢</router-link></li>
             </ul>
           </div>
         </li>
-        <li class="cart_btn sub" :class="{'active':bottomSub=='cart_btn'}">
+        <li class="cart_btn sub" :class="{ active: bottomSub == 'cart_btn' }">
           <a @click="bottomSubToggle('cart_btn')"
-            ><img src="@/assets/img/icon-cart.svg" /><span>0</span></a
+            ><img src="@/assets/img/icon-cart.svg" /><span>{{
+              cartList.length
+            }}</span></a
           >
           <div class="_sub_menu">
             <ul>
-              <li>
-                <div class="name">商品名稱</div>
-                <div class="price">$8,320</div>
-              </li>
-              <li>
-                <div class="name">商品名稱</div>
-                <div class="price">$8,320</div>
+              <template v-if="cartList.length == 0">
+                <div class="empty">購物車尚無商品</div>
+              </template>
+              <li v-for="item in cartList" :key="item.id">
+                <div class="name">{{ item.name }}X{{ item.qty }}</div>
+                <div class="price">{{ item.p_total }}</div>
               </li>
             </ul>
-            <div class="total">總計 $8,320</div>
-            <div class="cart_in_btn"><a href="cart.html">立即結帳</a></div>
+            <div class="total" v-if="cartList.length">
+              總計 {{ cart_total.text }}
+            </div>
+            <div class="cart_in_btn" v-if="cartList.length">
+              <router-link :to="{ path: '/cart' }">立即結帳</router-link>
+            </div>
           </div>
         </li>
       </ul>
@@ -75,23 +82,45 @@ export default {
       type: Array,
       default: () => [],
     },
+    cart_list: Array,
   },
-  data(){
+  data() {
     return {
-      bottomSub:''
+      bottomSub: '',
     }
+  },
+  computed: {
+    cartList() {
+      return this.cart_list.map((c) => {
+        c.price = Number(c.price)
+        c.qty = Number(c.qty)
+        c.priceText = new Intl.NumberFormat().format(c.price)
+        c.p_total = new Intl.NumberFormat().format(c.price * c.qty)
+        return c
+      })
+    },
+    cart_total() {
+      let total = 0
+      let data = []
+      this.cartList.forEach((c) => {
+        total = total + c.price * c.qty
+      })
+      data['price'] = total
+      data['text'] = new Intl.NumberFormat().format(total)
+      return data
+    },
   },
   methods: {
     subToggle(event) {
       event.target.parentNode.classList.toggle('active')
     },
-    bottomSubToggle(sub){
-      if(this.bottomSub == sub){
+    bottomSubToggle(sub) {
+      if (this.bottomSub == sub) {
         this.bottomSub = ''
-      }else{
+      } else {
         this.bottomSub = sub
       }
-    }
+    },
   },
 }
 </script>
@@ -250,7 +279,6 @@ export default {
           ul {
             list-style: none;
             padding-left: 0;
-
           }
 
           .total {

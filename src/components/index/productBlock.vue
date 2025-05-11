@@ -35,7 +35,7 @@ export default {
   },
   created() {
     this.$store.dispatch('get_products')
-    let productList = this.$store.state.product.product_list
+    let productList = this.$store.state.product.all_product_list
     let list = productList.filter((item) => this.product_block.list.includes(item.id))
     this.product_list = list
   },

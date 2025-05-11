@@ -139,7 +139,7 @@ export default {
   computed: {
     cart_list() {
       let cart = this.$store.state.common.cart
-      let product = this.$store.state.product.product_list
+      let product = this.$store.state.product.all_product_list
       let list = []
       cart.forEach((item, index) => {
         let p = product.find((l) => l.id == item.id)

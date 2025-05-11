@@ -7,7 +7,7 @@
           <span />
           <span />
         </div>
-        <mobileMenu :menuStatus="menuStatus" :header_list="header_list"/>
+        <mobileMenu :cart_list="cart_list" :menuStatus="menuStatus" :header_list="header_list"/>
         <logo></logo>
         <mainMenu :header_list="header_list"></mainMenu>
         <toolBar :cart_list="cart_list"></toolBar>
@@ -49,10 +49,7 @@ export default {
       cart.forEach((item, index) => {
         let p = product.find((l) => l.id == item.id)
         list[index] = {
-          id: p.id,
-          name: p.name,
-          pc_code: p.pc_code,
-          price: p.price,
+          ...p,
           qty: item.qty,
         }
       })
